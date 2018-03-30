@@ -1,5 +1,6 @@
 package com.gluonapplication.views;
 
+import com.gluonapplication.UserP;
 import com.gluonhq.charm.glisten.animation.FadeInTransition;
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.control.AppBar;
@@ -29,6 +30,8 @@ public class SecondaryView extends View {
 
     private FileInputStream serviceAccount;
     private FirebaseOptions options;
+
+
     public SecondaryView(String name) {
         super(name);
 
@@ -54,16 +57,6 @@ public class SecondaryView extends View {
 
         DatabaseReference ref = FirebaseDatabase.getInstance()
                 .getReference("Users");
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Object document = dataSnapshot.getValue();
-                System.out.println(document);
-            }
-            @Override
-            public void onCancelled(DatabaseError error) {
-            }
-        });
 
         DatabaseReference userRef = ref;
 
@@ -112,13 +105,30 @@ public class SecondaryView extends View {
 
         FadeInTransition fade1 = new FadeInTransition(box1);
         fade1.setRate(2);
-
         fade.setOnFinished((ActionEvent e) ->{fade1.play();});
 
 
+        login.setOnAction((ActionEvent e) -> {
+            userRef.child(email.getText()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String userID = dataSnapshot.child("password").getValue(String.class);
+                    if(userID == null){
+                        System.out.println("Invalid username or password");
+                    }
+                    System.out.println(userID);
+                }
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    System.out.println("nooooo");
+                }
+            });
+
+        });
+
         register.setOnAction((ActionEvent e) -> {
-            userRef.child(email.getText()).child("Email").setValueAsync(email.getText());
-            userRef.child(email.getText()).child("Password").setValueAsync(pw.getText());
+            UserP newUser = new UserP(email.getText(), pw.getText());
+            userRef.child(newUser.getUsername()).setValueAsync(newUser);
         });
 
 
