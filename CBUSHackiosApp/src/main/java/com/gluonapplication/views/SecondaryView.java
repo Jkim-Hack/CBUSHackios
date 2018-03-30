@@ -53,7 +53,7 @@ public class SecondaryView extends View {
         FirebaseApp.initializeApp(options);
 
         DatabaseReference ref = FirebaseDatabase.getInstance()
-                .getReference("restricted_access/secret_document");
+                .getReference("Users");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -65,7 +65,7 @@ public class SecondaryView extends View {
             }
         });
 
-        DatabaseReference userRef = ref.child("User");
+        DatabaseReference userRef = ref;
 
 
         Rectangle topRect = new Rectangle(340.0, 70);
@@ -117,7 +117,8 @@ public class SecondaryView extends View {
 
 
         register.setOnAction((ActionEvent e) -> {
-            userRef.child(email.getText()).setValueAsync(pw.getText());
+            userRef.child(email.getText()).child("Email").setValueAsync(email.getText());
+            userRef.child(email.getText()).child("Password").setValueAsync(pw.getText());
         });
 
 
