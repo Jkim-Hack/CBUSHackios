@@ -16,7 +16,9 @@ public class GluonApplication extends MobileApplication {
     public static final String SECONDARY_VIEW = "Secondary View";
     public static final String THIRD_VIEW = "Third View";
     public static final String MENU_LAYER = "Side Menu";
-    
+
+    //LOOK ONLY AT SECONDARYVIEW AND THIRDVIEW
+
     @Override
     public void init() {
         addViewFactory(PRIMARY_VIEW, () -> new PrimaryView(PRIMARY_VIEW));
