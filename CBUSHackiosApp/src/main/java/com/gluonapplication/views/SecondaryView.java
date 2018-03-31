@@ -39,7 +39,7 @@ public class SecondaryView extends View {
 
         try {
             serviceAccount =
-                    new FileInputStream("C:/Users/Kim/Desktop/CBUSHackios/CBUSHackiosApp/src/main/cbushack-save-the-world-604e9-firebase-adminsdk-kvlkk-37abcc4355.json");
+                    new FileInputStream("CBUSHackiosApp/src/main/cbushack-save-the-world-604e9-firebase-adminsdk-kvlkk-37abcc4355.json");
         } catch (FileNotFoundException e){
                 System.out.println("Error1");
         }
@@ -107,7 +107,7 @@ public class SecondaryView extends View {
         fade1.setRate(2);
         fade.setOnFinished((ActionEvent e) ->{fade1.play();});
 
-
+        //Retrieves data from firebase and sees if this exists.
         login.setOnAction((ActionEvent e) -> {
             userRef.child(email.getText()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -115,8 +115,10 @@ public class SecondaryView extends View {
                     String userID = dataSnapshot.child("password").getValue(String.class);
                     if(userID == null){
                         System.out.println("Invalid username or password");
+                    } else {
+
                     }
-                    System.out.println(userID);
+
                 }
                 @Override
                 public void onCancelled(DatabaseError error) {
@@ -126,9 +128,13 @@ public class SecondaryView extends View {
 
         });
 
+       //Currently this register button's action gets the input lines and puts it into the firebase daatabase.
+
         register.setOnAction((ActionEvent e) -> {
-            UserP newUser = new UserP(email.getText(), pw.getText());
-            userRef.child(newUser.getUsername()).setValueAsync(newUser);
+            //The commented line below makes it so that when you click this button it goes to the next view. This case, the ThirdView class
+            //MobileApplication.getInstance().switchView("THIRD_VIEW");
+            UserP newUser = new UserP(email.getText(), pw.getText()); //Makes new User object
+            userRef.child(newUser.getUsername()).setValueAsync(newUser); //Sets values in the child
         });
 
 

@@ -15,6 +15,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+//IGNORE THIS VIEW DO NOT USE THIS YET
+
+
 public class PrimaryView extends View {
 
     public PrimaryView(String name) {
