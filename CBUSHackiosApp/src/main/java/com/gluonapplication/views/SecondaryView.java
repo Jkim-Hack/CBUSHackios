@@ -39,7 +39,7 @@ public class SecondaryView extends View {
 
         try {
             serviceAccount =
-                    new FileInputStream("CBUSHackiosApp/src/main/cbushack-save-the-world-604e9-firebase-adminsdk-kvlkk-37abcc4355.json");
+                    new FileInputStream("cbushack-save-the-world-604e9-firebase-adminsdk-kvlkk-37abcc4355.json");
         } catch (FileNotFoundException e){
                 System.out.println("Error1");
         }
