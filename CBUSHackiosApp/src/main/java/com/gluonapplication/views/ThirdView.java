@@ -6,13 +6,19 @@ import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 
+import javafx.scene.control.Button;
+
 
 //THIS IS WHERE YOU NEED TO WORK DO NOT CHANGE ANYTHING TO THIS, THIS IS THE BASIC FORMAT OF A VIEW.
+//Nibba no shit - Ragboi
 
 public class ThirdView extends View{
 
     public ThirdView(String name){
         super(name);
+        
+        Button buttsack = new Button();
+        buttsack.setText("England is my CITY");
 
 
     //TODO ABHISHEK Create a register UI that takes in email, username, password.

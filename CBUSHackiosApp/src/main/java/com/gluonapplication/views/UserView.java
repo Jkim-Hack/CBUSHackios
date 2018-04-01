@@ -15,10 +15,6 @@ public class UserView extends View{
             super(name);
 
             Button map = new Button();
-
-
-
-
         }
 
 
