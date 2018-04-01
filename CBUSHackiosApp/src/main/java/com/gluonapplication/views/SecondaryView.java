@@ -116,7 +116,7 @@ public class SecondaryView extends View {
                     if(userID == null){
                         System.out.println("Invalid username or password");
                     } else {
-
+                        MobileApplication.getInstance().switchView("USER_VIEW");
                     }
 
                 }

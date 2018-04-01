@@ -88,5 +88,17 @@
     <orderEntry type="library" name="Gradle: com.gluonhq:charm:4.4.1" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-common:4.1.17.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-resolver:4.1.17.Final" level="project" />
+    <orderEntry type="module-library">
+      <library name="GMapsFX">
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../../rterp-GMapsFX-GMapsFX-2.12.0-28-g4623d3f.zip!/rterp-GMapsFX-4623d3f/GMapsFX-Examples/DirectionsExample/src/main/java" />
+          <root url="jar://$MODULE_DIR$/../../../rterp-GMapsFX-GMapsFX-2.12.0-28-g4623d3f.zip!/rterp-GMapsFX-4623d3f/GMapsFX-Examples/LatLongExample/src/main/java" />
+          <root url="jar://$MODULE_DIR$/../../../rterp-GMapsFX-GMapsFX-2.12.0-28-g4623d3f.zip!/rterp-GMapsFX-4623d3f/GMapsFX/src/main/java" />
+          <root url="jar://$MODULE_DIR$/../../../rterp-GMapsFX-GMapsFX-2.12.0-28-g4623d3f.zip!/rterp-GMapsFX-4623d3f/GMapsFX/src/test/java" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

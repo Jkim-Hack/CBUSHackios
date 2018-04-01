@@ -3,6 +3,7 @@ package com.gluonapplication;
 import com.gluonapplication.views.PrimaryView;
 import com.gluonapplication.views.SecondaryView;
 import com.gluonapplication.views.ThirdView;
+import com.gluonapplication.views.UserView;
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.layout.layer.SidePopupView;
 import com.gluonhq.charm.glisten.visual.Swatch;
@@ -15,6 +16,7 @@ public class GluonApplication extends MobileApplication {
     public static final String PRIMARY_VIEW = HOME_VIEW;
     public static final String SECONDARY_VIEW = "Secondary View";
     public static final String THIRD_VIEW = "Third View";
+    public static final String USER_VIEW = "User View";
     public static final String MENU_LAYER = "Side Menu";
 
     //LOOK ONLY AT SECONDARYVIEW AND THIRDVIEW
@@ -24,6 +26,7 @@ public class GluonApplication extends MobileApplication {
         addViewFactory(PRIMARY_VIEW, () -> new PrimaryView(PRIMARY_VIEW));
         addViewFactory(SECONDARY_VIEW, () -> new SecondaryView(SECONDARY_VIEW));
         addViewFactory(THIRD_VIEW, () -> new ThirdView(THIRD_VIEW));
+        addViewFactory(USER_VIEW, () -> new UserView(USER_VIEW));
         addLayerFactory(MENU_LAYER, () -> new SidePopupView(new DrawerManager().getDrawer()));
     }
 
