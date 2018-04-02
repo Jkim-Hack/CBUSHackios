@@ -11,7 +11,9 @@ import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.*;
+import com.google.firebase.database.annotations.NotNull;
 import javafx.animation.FillTransition;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -20,7 +22,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Callback;
 import javafx.util.Duration;
+import jdk.nashorn.internal.codegen.CompilerConstants;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -30,6 +34,9 @@ public class SecondaryView extends View {
 
     private FileInputStream serviceAccount;
     private FirebaseOptions options;
+    public static boolean isuserIDVal;
+
+
 
 
     public SecondaryView(String name) {
@@ -39,7 +46,7 @@ public class SecondaryView extends View {
 
         try {
             serviceAccount =
-                    new FileInputStream("cbushack-save-the-world-604e9-firebase-adminsdk-kvlkk-37abcc4355.json");
+                    new FileInputStream("CBUSHackiosApp/src/main/cbushack-save-the-world-604e9-firebase-adminsdk-kvlkk-37abcc4355.json");
         } catch (FileNotFoundException e){
                 System.out.println("Error1");
         }
@@ -107,24 +114,23 @@ public class SecondaryView extends View {
         fade1.setRate(2);
         fade.setOnFinished((ActionEvent e) ->{fade1.play();});
 
+
+
+
         //Retrieves data from firebase and sees if this exists.
         login.setOnAction((ActionEvent e) -> {
-            userRef.child(email.getText()).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    String userID = dataSnapshot.child("password").getValue(String.class);
-                    if(userID == null){
-                        System.out.println("Invalid username or password");
-                    } else {
-                        MobileApplication.getInstance().switchView("USER_VIEW");
-                    }
 
-                }
-                @Override
-                public void onCancelled(DatabaseError error) {
-                    System.out.println("nooooo");
-                }
-            });
+
+
+            validate(userRef, email, new com.gluonapplication.Callback() {
+                        @Override
+                        public void onComplete(String str, boolean lol) {
+                           System.out.println(lol);
+                           isuserIDVal = lol;
+                        }
+                    });
+
+            MobileApplication.getInstance().switchView(GluonApplication.USER_VIEW);
 
         });
 
@@ -148,5 +154,35 @@ public class SecondaryView extends View {
         appBar.setTitleText("Secondary");
 
     }
-    
-}
+
+    public void validate(DatabaseReference userRef, TextField email, com.gluonapplication.Callback callback){
+
+
+
+        userRef.child(email.getText()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String IDref = dataSnapshot.child("password").getValue(String.class);
+                callback.onComplete(IDref, true);
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                System.out.println("nooooo");
+            }
+
+
+        });
+
+
+
+    }
+
+    }
+
+
+
+
+

@@ -5,6 +5,7 @@ import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
 public class UserView extends View{
@@ -15,13 +16,17 @@ public class UserView extends View{
             super(name);
 
             Button map = new Button();
+            map.setOnAction((ActionEvent e) ->{
+                System.out.println(SecondaryView.isuserIDVal);
+            });
+           setCenter(map);
         }
 
 
         @Override
         protected void updateAppBar(AppBar appBar) {
             appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> MobileApplication.getInstance().showLayer(GluonApplication.MENU_LAYER)));
-            appBar.setTitleText("USER");
+            appBar.setTitleText("User");
             appBar.getActionItems().add(MaterialDesignIcon.SEARCH.button(e -> System.out.println("Search")));
         }
 
