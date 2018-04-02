@@ -8,6 +8,7 @@ import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
+
 public class UserView extends View{
 
 
@@ -21,6 +22,9 @@ public class UserView extends View{
             });
            setCenter(map);
         }
+
+
+
 
 
         @Override

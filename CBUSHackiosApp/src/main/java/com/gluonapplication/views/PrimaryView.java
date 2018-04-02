@@ -10,6 +10,14 @@ import com.gluonhq.charm.glisten.control.Icon;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.gluonapplication.GluonApplication;
+import com.lynden.gmapsfx.GoogleMapView;
+import com.lynden.gmapsfx.MapComponentInitializedListener;
+import com.lynden.gmapsfx.javascript.object.GoogleMap;
+import com.lynden.gmapsfx.javascript.object.LatLong;
+import com.lynden.gmapsfx.javascript.object.MapOptions;
+import com.lynden.gmapsfx.javascript.object.MapTypeIdEnum;
+import com.lynden.gmapsfx.javascript.object.Marker;
+import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,23 +26,22 @@ import javafx.scene.layout.VBox;
 //IGNORE THIS VIEW DO NOT USE THIS YET
 
 
-public class PrimaryView extends View {
+public class PrimaryView extends View implements MapComponentInitializedListener {
+
+    GoogleMapView mapView;
+    GoogleMap map;
+
 
     public PrimaryView(String name) {
         super(name);
-        
-        getStylesheets().add(PrimaryView.class.getResource("primary.css").toExternalForm());
 
-        Label label = new Label("Welcome User!");
+        mapView = new GoogleMapView();
+        mapView.addMapInializedListener(this);
 
-        Button button = new Button("Change the World!");
-        FadeInUpTransition fade = new FadeInUpTransition(label);
-        button.setGraphic(new Icon(MaterialDesignIcon.LANGUAGE));
-        button.setOnAction(e -> label.setText("Hello JavaFX Universe!"));
 
-        setTop(label);
+        setCenter(mapView);
 
-        fade.play();
+
 
     }
 
@@ -44,5 +51,38 @@ public class PrimaryView extends View {
         appBar.setTitleText("Primary");
         appBar.getActionItems().add(MaterialDesignIcon.SEARCH.button(e -> System.out.println("Search")));
     }
-    
+
+
+    @Override
+    public void mapInitialized() {
+        //Set the initial properties of the map.
+        MapOptions mapOptions = new MapOptions();
+
+        mapOptions.center(new LatLong(47.6097, -122.3331))
+                .mapType(MapTypeIdEnum.ROADMAP)
+                .overviewMapControl(false)
+                .panControl(false)
+                .rotateControl(false)
+                .scaleControl(false)
+                .streetViewControl(false)
+                .zoomControl(false)
+                .zoom(12);
+
+        map = mapView.createMap(mapOptions);
+
+        //Add a marker to the map
+        MarkerOptions markerOptions = new MarkerOptions();
+
+        markerOptions.position( new LatLong(47.6, -122.3) )
+                .visible(Boolean.TRUE)
+                .title("My Marker");
+
+        Marker marker = new Marker( markerOptions );
+
+        map.addMarker(marker);
+
+    }
+
+
+
 }

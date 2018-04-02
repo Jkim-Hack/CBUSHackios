@@ -12,6 +12,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 
+
+
 //THIS IS WHERE YOU NEED TO WORK DO NOT CHANGE ANYTHING TO THIS, THIS IS THE BASIC FORMAT OF A VIEW.
 //Nibba no shit - Ragboi
 

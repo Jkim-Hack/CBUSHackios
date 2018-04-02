@@ -20,6 +20,7 @@ repositories {
 mainClassName = 'com.gluonapplication.GluonApplication'
 
 dependencies {
+    compile 'com.lynden:GMapsFX:2.12.0'
     compile 'com.gluonhq:charm:4.4.1'
     compile 'com.google.firebase:firebase-admin:5.9.0'
 }
