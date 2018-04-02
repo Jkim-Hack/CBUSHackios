@@ -20,15 +20,11 @@ public class ThirdView extends View{
     public ThirdView(String name){
         super(name);
         
-        		Label lblUserName = new Label("Username");
-                final TextField txtUserName = new TextField();
-                Label lblPassword = new Label("Password");
-                final PasswordField pf = new PasswordField();   
-                Button btnLogin = new Button("Login");
-                final Label lblMessage = new Label();
-
-        
-        
+        Label lblUserName = new Label("Username");
+        TextField txtUserName = new TextField();
+        Label lblPassword = new Label("Password");
+        PasswordField pf = new PasswordField();   
+        Button btnLogin = new Button("Login");
 
     //TODO ABHISHEK Create a register UI that takes in email, username, password.
     //IMPORTANT: Firebase cannot get @'s or .'s from the app so I suggest you use a @gmail.com/@yahoo.com dropdown menu
