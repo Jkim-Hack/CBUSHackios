@@ -7,6 +7,9 @@ import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 
 //THIS IS WHERE YOU NEED TO WORK DO NOT CHANGE ANYTHING TO THIS, THIS IS THE BASIC FORMAT OF A VIEW.
@@ -17,9 +20,15 @@ public class ThirdView extends View{
     public ThirdView(String name){
         super(name);
         
-        Button buttsack = new Button();
-        buttsack.setText("England is my CITY");
+        		Label lblUserName = new Label("Username");
+                final TextField txtUserName = new TextField();
+                Label lblPassword = new Label("Password");
+                final PasswordField pf = new PasswordField();   
+                Button btnLogin = new Button("Login");
+                final Label lblMessage = new Label();
 
+        
+        
 
     //TODO ABHISHEK Create a register UI that takes in email, username, password.
     //IMPORTANT: Firebase cannot get @'s or .'s from the app so I suggest you use a @gmail.com/@yahoo.com dropdown menu
