@@ -80,6 +80,7 @@ public class PrimaryView extends View implements MapComponentInitializedListener
         map = mapView.createMap(mapOptions);
 
         //Add a marker to the map
+        /*
         MarkerOptions markerOptions = new MarkerOptions();
 
         markerOptions.position( new LatLong(40.1190466, -83.16312040000003) )
@@ -93,7 +94,7 @@ public class PrimaryView extends View implements MapComponentInitializedListener
         map.setZoom(18);
         
         map.addMouseEventHandler(type, h);
-
+*/
     }
 
 
