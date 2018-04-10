@@ -7,11 +7,10 @@ import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.shape.Circle;
 
 
 public class UserView extends View{
-
-
 
         public UserView(String name){
             super(name);
@@ -20,7 +19,13 @@ public class UserView extends View{
             map.setOnAction((ActionEvent e) ->{
                 System.out.println(SecondaryView.isuserIDVal);
             });
-           setCenter(map);
+
+            map.getStylesheets().add("CircleButton.css");
+
+
+
+
+            setCenter(map);
         }
 
 

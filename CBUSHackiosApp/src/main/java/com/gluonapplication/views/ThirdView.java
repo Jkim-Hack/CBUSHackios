@@ -13,24 +13,12 @@ import javafx.scene.control.TextField;
 
 
 
-
-//THIS IS WHERE YOU NEED TO WORK DO NOT CHANGE ANYTHING TO THIS, THIS IS THE BASIC FORMAT OF A VIEW.
-//Nibba no shit - Ragboi
-
 public class ThirdView extends View{
 
     public ThirdView(String name){
         super(name);
         
-        Label lblUserName = new Label("Username");
-        TextField txtUserName = new TextField();
-        Label lblPassword = new Label("Password");
-        PasswordField pf = new PasswordField();   
-        Button btnLogin = new Button("Login");
 
-    //TODO ABHISHEK Create a register UI that takes in email, username, password.
-    //IMPORTANT: Firebase cannot get @'s or .'s from the app so I suggest you use a @gmail.com/@yahoo.com dropdown menu
-        // right next to the place where the user types in their username
 
     }
 
