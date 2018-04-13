@@ -6,19 +6,32 @@ import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.controls.JFXSlider;
 import javafx.geometry.Orientation;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
+import javafx.scene.layout.HBox;
 
 
 public class ThirdView extends View{
 
+
+    private static final String FX_TEXT_FILL_WHITE = "-fx-text-fill:WHITE";
+    private static final String ANIMATED_OPTION_BUTTON = "animated-option-button";
+    private static final String ANIMATED_OPTION_SUB_BUTTON = "animated-option-sub-button";
+    private static final String ANIMATED_OPTION_SUB_BUTTON2 = "animated-option-sub-button2";
+
+
     public ThirdView(String name){
         super(name);
+
+        HBox box = new HBox();
+
+
 
         JFXSlider hor_right = new JFXSlider();
         hor_right.setMaxWidth(200);
@@ -29,7 +42,35 @@ public class ThirdView extends View{
         hor_right.setShowTickLabels(true);
         hor_right.setShowTickMarks(true);
         hor_right.getStylesheets().add("slider.css");
-        setCenter(hor_right);
+
+        box.getChildren().add(hor_right);
+
+
+        JFXNodesList profileList = new JFXNodesList();
+
+
+        Button b = new Button("LOL");
+
+        profileList.addAnimatedNode(b);
+
+
+        JFXButton ssbutton1 = new JFXButton();
+        Label sslabel = new Label("R1");
+        sslabel.setStyle(FX_TEXT_FILL_WHITE);
+        ssbutton1.setGraphic(sslabel);
+        ssbutton1.setButtonType(JFXButton.ButtonType.RAISED);
+        ssbutton1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON2);
+
+        JFXNodesList nodesList = new JFXNodesList();
+        nodesList.setSpacing(10);
+        nodesList.addAnimatedNode(ssbutton1);
+
+        setCenter(nodesList);
+
+
+
+
+
 
     }
 

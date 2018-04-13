@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: com.android.support:multidex:aar:1.0.1">
-    <CLASSES>
-      <root url="file://C:/Android/android-sdk/extras/android/m2repository/com/android/support/multidex/1.0.1/multidex-1.0.1.aar" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
