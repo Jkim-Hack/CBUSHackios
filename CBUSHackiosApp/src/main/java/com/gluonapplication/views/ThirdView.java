@@ -59,11 +59,28 @@ public class ThirdView extends View{
         sslabel.setStyle(FX_TEXT_FILL_WHITE);
         ssbutton1.setGraphic(sslabel);
         ssbutton1.setButtonType(JFXButton.ButtonType.RAISED);
-        ssbutton1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON2);
+        ssbutton1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+
+        JFXButton ssbutton2 = new JFXButton();
+        sslabel.setStyle(FX_TEXT_FILL_WHITE);
+        ssbutton2.setGraphic(sslabel);
+        ssbutton2.setButtonType(JFXButton.ButtonType.RAISED);
+        ssbutton2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+
+        JFXButton ssbutton3 = new JFXButton();
+        sslabel.setStyle(FX_TEXT_FILL_WHITE);
+        ssbutton3.setGraphic(sslabel);
+        ssbutton3.setButtonType(JFXButton.ButtonType.RAISED);
+        ssbutton3.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+
+
 
         JFXNodesList nodesList = new JFXNodesList();
         nodesList.setSpacing(10);
         nodesList.addAnimatedNode(ssbutton1);
+        nodesList.addAnimatedNode(ssbutton2);
+        nodesList.addAnimatedNode(ssbutton3);
+
 
         setCenter(nodesList);
 
