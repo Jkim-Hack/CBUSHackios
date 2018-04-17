@@ -135,11 +135,21 @@ public class Problem1 extends View{
         sbutton2.setButtonType(JFXButton.ButtonType.RAISED);
         sbutton2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTONTWO);
 
+        sbutton2.setOnAction((ActionEvent e) -> {
+
+            MobileApplication.getInstance().switchView(GluonApplication.PROBLEM2_VIEW);
+
+        });
+
         JFXButton sbutton3 = new JFXButton("Minimal \nWage");
         sbutton3.setButtonType(JFXButton.ButtonType.RAISED);
         sbutton3.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTONTWO);
 
+        sbutton3.setOnAction((ActionEvent e) -> {
 
+            MobileApplication.getInstance().switchView(GluonApplication.PROBLEM3_VIEW);
+
+        });
 
         JFXNodesList nodesList = new JFXNodesList();
         nodesList.setSpacing(20);

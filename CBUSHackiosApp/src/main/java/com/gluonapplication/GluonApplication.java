@@ -15,6 +15,8 @@ public class GluonApplication extends MobileApplication {
     public static final String THIRD_VIEW = "Third View";
     public static final String USER_VIEW = "User View";
     public static final String PROBLEM1_VIEW = "Problem1 View";
+    public static final String PROBLEM2_VIEW = "Problem2 View";
+    public static final String PROBLEM3_VIEW = "Problem3 View";
     public static final String MENU_LAYER = "Side Menu";
 
     //LOOK ONLY AT SECONDARYVIEW AND THIRDVIEW
@@ -25,6 +27,8 @@ public class GluonApplication extends MobileApplication {
         addViewFactory(SECONDARY_VIEW, () -> new SecondaryView(SECONDARY_VIEW));
         addViewFactory(THIRD_VIEW, () -> new ThirdView(THIRD_VIEW));
         addViewFactory(PROBLEM1_VIEW, () -> new Problem1(PROBLEM1_VIEW));
+        addViewFactory(PROBLEM2_VIEW, () -> new Problem2(PROBLEM2_VIEW));
+        addViewFactory(PROBLEM3_VIEW, () -> new Problem3(PROBLEM3_VIEW));
         addViewFactory(USER_VIEW, () -> new UserView(USER_VIEW));
         addLayerFactory(MENU_LAYER, () -> new SidePopupView(new DrawerManager().getDrawer()));
     }

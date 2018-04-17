@@ -132,7 +132,7 @@ public class SecondaryView extends View {
                         }
                     });
 
-            MobileApplication.getInstance().switchView(GluonApplication.USER_VIEW);
+            MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
 
         });
 
