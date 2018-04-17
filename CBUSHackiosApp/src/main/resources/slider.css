@@ -11,12 +11,12 @@
 
 /* Styling the filled track */
 .jfx-slider > .colored-track {
-     -fx-background-color: transparent;
+     -fx-background-color: gray;
 }
 
 /* Styling the animated thumb */
 .jfx-slider > .animated-thumb {
-     -fx-background-color: green;
+     -fx-background-color: transparent;
 }
 
 /* Styling the slider value text inside animated thumb */

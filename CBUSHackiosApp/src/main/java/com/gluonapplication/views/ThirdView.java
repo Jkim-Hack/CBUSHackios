@@ -9,12 +9,15 @@ import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.controls.JFXSlider;
+import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 
 public class ThirdView extends View{
@@ -23,16 +26,13 @@ public class ThirdView extends View{
     private static final String FX_TEXT_FILL_WHITE = "-fx-text-fill:WHITE";
     private static final String ANIMATED_OPTION_BUTTON = "animated-option-button";
     private static final String ANIMATED_OPTION_SUB_BUTTON = "animated-option-sub-button";
-    private static final String ANIMATED_OPTION_SUB_BUTTON2 = "animated-option-sub-button2";
+    private static final String ANIMATED_OPTION_SUB_BUTTONTWO = "animated-option-sub-buttontwo";
 
 
     public ThirdView(String name){
         super(name);
 
-        HBox box = new HBox();
-
-
-
+/*
         JFXSlider hor_right = new JFXSlider();
         hor_right.setMaxWidth(200);
         hor_right.setIndicatorPosition(JFXSlider.IndicatorPosition.RIGHT);
@@ -43,9 +43,6 @@ public class ThirdView extends View{
         hor_right.setShowTickMarks(true);
         hor_right.getStylesheets().add("slider.css");
 
-        box.getChildren().add(hor_right);
-
-
         JFXNodesList profileList = new JFXNodesList();
 
 
@@ -54,39 +51,66 @@ public class ThirdView extends View{
         profileList.addAnimatedNode(b);
 
 
-        JFXButton ssbutton1 = new JFXButton();
-        Label sslabel = new Label("R1");
-        sslabel.setStyle(FX_TEXT_FILL_WHITE);
-        ssbutton1.setGraphic(sslabel);
+        JFXButton ssbutton1 = new JFXButton("Profile");
         ssbutton1.setButtonType(JFXButton.ButtonType.RAISED);
         ssbutton1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
 
-        JFXButton ssbutton2 = new JFXButton();
-        sslabel.setStyle(FX_TEXT_FILL_WHITE);
-        ssbutton2.setGraphic(sslabel);
+        JFXButton ssbutton2 = new JFXButton("Problems");
         ssbutton2.setButtonType(JFXButton.ButtonType.RAISED);
-        ssbutton2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
+        ssbutton2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTONTWO);
 
-        JFXButton ssbutton3 = new JFXButton();
-        sslabel.setStyle(FX_TEXT_FILL_WHITE);
-        ssbutton3.setGraphic(sslabel);
+        JFXButton ssbutton3 = new JFXButton("News");
         ssbutton3.setButtonType(JFXButton.ButtonType.RAISED);
         ssbutton3.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
 
+        JFXButton sbutton1 = new JFXButton("Gun Control");
+        sbutton1.setButtonType(JFXButton.ButtonType.RAISED);
+        sbutton1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTONTWO);
+
+        JFXButton sbutton2 = new JFXButton("Abortion");
+        sbutton2.setButtonType(JFXButton.ButtonType.RAISED);
+        sbutton2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTONTWO);
+
+        JFXButton sbutton3 = new JFXButton("Minimal Wage");
+        sbutton3.setButtonType(JFXButton.ButtonType.RAISED);
+        sbutton3.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTONTWO);
+
+
+
+        JFXNodesList nodesList1 = new JFXNodesList();
+        nodesList1.setRotate(270);
+        nodesList1.setSpacing(10);
+        nodesList1.addAnimatedNode(ssbutton2);
+        nodesList1.addAnimatedNode(sbutton1);
+        nodesList1.addAnimatedNode(sbutton2);
+        nodesList1.addAnimatedNode(sbutton3);
 
 
         JFXNodesList nodesList = new JFXNodesList();
         nodesList.setSpacing(10);
         nodesList.addAnimatedNode(ssbutton1);
-        nodesList.addAnimatedNode(ssbutton2);
+        nodesList.addAnimatedNode(nodesList1);
         nodesList.addAnimatedNode(ssbutton3);
 
 
-        setCenter(nodesList);
+        nodesList.setPadding(new Insets(10, -10, -10, -10));
 
+*/
 
+        VBox box = new VBox();
 
+            Button problem1 = new Button("Gun Control");
+            Button problem2 = new Button("Abortion");
+            Button problem3 = new Button("Minimal Wage");
 
+            box.getChildren().addAll(problem1, problem2, problem3);
+
+            box.setSpacing(20);
+            box.setPadding(new Insets(20));
+
+        setCenter(box);
+
+        box.setAlignment(Pos.CENTER);
 
 
     }
@@ -95,8 +119,8 @@ public class ThirdView extends View{
     @Override
     protected void updateAppBar(AppBar appBar) {
         appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> MobileApplication.getInstance().showLayer(GluonApplication.MENU_LAYER)));
-        appBar.setTitleText("Third");
-        appBar.getActionItems().add(MaterialDesignIcon.SEARCH.button(e -> System.out.println("Search")));
+        appBar.setTitleText("Current Issues");
+
     }
 
 }

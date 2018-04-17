@@ -35,8 +35,8 @@ public class SecondaryView extends View {
     private FileInputStream serviceAccount;
     private FirebaseOptions options;
     public static boolean isuserIDVal;
-
-
+    public static String emailL;
+    public static String passwordD;
 
 
     public SecondaryView(String name) {
@@ -127,6 +127,8 @@ public class SecondaryView extends View {
                         public void onComplete(String str, boolean lol) {
                            System.out.println(lol);
                            isuserIDVal = lol;
+                           emailL = email.getText();
+                           passwordD = str;
                         }
                     });
 

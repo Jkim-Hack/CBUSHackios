@@ -1,11 +1,11 @@
-.button {
-
-"-fx-background-radius: 5em; " +
-                "-fx-min-width: 3px; " +
-                "-fx-min-height: 3px; " +
-                "-fx-max-width: 3px; " +
-                "-fx-max-height: 3px;"
 
 
+.jfx-button {
+    -fx-background-color:transparent;
+     -jfx-button-type: FLAT;
+     -fx-background-color: white;
+     -fx-text-fill: #49bcff;
+     -fx-font-size: 15px;
 }
+
 
