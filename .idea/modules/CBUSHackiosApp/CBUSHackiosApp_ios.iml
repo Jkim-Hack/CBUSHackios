@@ -19,16 +19,18 @@
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-display-ios:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-display:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-lifecycle:3.7.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-pictures:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-statusbar:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-cloudlink-client:4.4.4" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-lifecycle-ios:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-storage:3.7.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-pictures-ios:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:robovm-cocoatouch:2.3.1-ios11" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-statusbar-ios:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-classic:1.2.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-statusbar-ios:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.25" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-storage-ios:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:connect:1.4.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-storage-ios:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.google.api-client:google-api-client-gson:1.23.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.cloud:google-cloud-storage:1.15.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.cloud:google-cloud-core-http:1.15.0" level="project" />

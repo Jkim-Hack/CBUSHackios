@@ -17,6 +17,7 @@
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-glisten:4.4.1" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-display:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-lifecycle:3.7.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-pictures:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-statusbar:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-cloudlink-client:4.4.4" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-storage:3.7.2" level="project" />

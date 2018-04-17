@@ -139,10 +139,9 @@ public class SecondaryView extends View {
        //Currently this register button's action gets the input lines and puts it into the firebase daatabase.
 
         register.setOnAction((ActionEvent e) -> {
-            //The commented line below makes it so that when you click this button it goes to the next view. This case, the ThirdView class
-            //MobileApplication.getInstance().switchView("THIRD_VIEW");
-            UserP newUser = new UserP(email.getText(), pw.getText()); //Makes new User object
-            userRef.child(newUser.getUsername()).setValueAsync(newUser); //Sets values in the child
+
+            MobileApplication.getInstance().switchView(GluonApplication.USER_VIEW);
+
         });
 
 
