@@ -16,8 +16,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 
 
 public class ThirdView extends View{
@@ -109,6 +114,13 @@ public class ThirdView extends View{
             box.setPadding(new Insets(20));
 
         setCenter(box);
+
+        Circle cir2 = new Circle(250,250,120);
+        cir2.setStroke(Color.SEAGREEN);
+        //cir2.setFill(new ImagePattern(SecondaryView.profilePic));
+        cir2.setEffect(new DropShadow(+25d, 0d, +2d, Color.DARKSEAGREEN));
+
+        setTop(cir2);
 
         box.setAlignment(Pos.CENTER);
 

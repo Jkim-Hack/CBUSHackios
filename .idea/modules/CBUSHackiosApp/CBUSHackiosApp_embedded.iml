@@ -9,11 +9,12 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="CBUSHackiosApp_main" />
     <orderEntry type="library" name="Gradle: com.lynden:GMapsFX:2.12.0" level="project" />
+    <orderEntry type="module" module-name="CBUSHackiosApp_main" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm:4.4.1" level="project" />
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-admin:5.9.0" level="project" />
     <orderEntry type="library" name="Gradle: com.jfoenix:jfoenix:8.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-v4:aar:25.1.1" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-glisten-connect-view:4.4.1" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-glisten:4.4.1" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-display:3.7.2" level="project" />
@@ -21,8 +22,8 @@
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-lifecycle:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-pictures:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-statusbar:3.7.2" level="project" />
-    <orderEntry type="library" name="Gradle: com.gluonhq:charm-cloudlink-client:4.4.4" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-lifecycle-desktop:3.7.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.gluonhq:charm-cloudlink-client:4.4.4" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-storage:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-classic:1.2.1" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.25" level="project" />
@@ -67,6 +68,11 @@
     <orderEntry type="library" name="Gradle: io.netty:netty-codec-socks:4.1.17.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-codec:4.1.17.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-transport:4.1.17.Final" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-fragment:aar:25.1.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-media-compat:aar:25.1.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-core-utils:aar:25.1.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-core-ui:aar:25.1.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-compat:aar:25.1.1" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-device:3.6.0" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-in-app-billing:3.6.0" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-push-notifications:3.6.0" level="project" />
@@ -81,6 +87,7 @@
     <orderEntry type="library" name="Gradle: io.netty:netty-tcnative-boringssl-static:2.0.7.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-buffer:4.1.17.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-resolver:4.1.17.Final" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-annotations:25.1.1" level="project" />
     <orderEntry type="library" name="Gradle: com.google.guava:guava-jdk5:17.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.7" level="project" />
     <orderEntry type="library" name="Gradle: joda-time:joda-time:2.9.2" level="project" />

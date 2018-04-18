@@ -1,6 +1,7 @@
 package com.gluonapplication;
 
-import com.gluonhq.charm.glisten.control.Avatar;
+
+import javafx.scene.image.Image;
 
 public class UserP {
 
@@ -8,9 +9,9 @@ public class UserP {
 
     private String Username;
     private String Password;
-    private Avatar user;
+    private Image user;
 
-    public UserP(String name , String pw, Avatar userp){
+    public UserP(String name , String pw, Image userp){
         Username = name;
         Password = pw;
         user = userp;
@@ -33,11 +34,11 @@ public class UserP {
     }
 
 
-    public Avatar getUser() {
+    public Image getUser() {
         return user;
     }
 
-    public void setUser(Avatar user) {
+    public void setUser(Image user) {
         this.user = user;
     }
 }

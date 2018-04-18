@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -37,6 +38,7 @@ public class SecondaryView extends View {
     public static boolean isuserIDVal;
     public static String emailL;
     public static String passwordD;
+    public static Image profilePic;
 
 
     public SecondaryView(String name) {
@@ -124,15 +126,17 @@ public class SecondaryView extends View {
 
             validate(userRef, email, new com.gluonapplication.Callback() {
                         @Override
-                        public void onComplete(String str, boolean lol) {
+                        public void onComplete(String str, boolean lol, Image image) {
                            System.out.println(lol);
                            isuserIDVal = lol;
                            emailL = email.getText();
                            passwordD = str;
+                           profilePic = image;
+                           System.out.println(emailL);
                         }
                     });
 
-            MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
+            //MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
 
         });
 
@@ -164,7 +168,8 @@ public class SecondaryView extends View {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String IDref = dataSnapshot.child("password").getValue(String.class);
-                callback.onComplete(IDref, true);
+                Image image = dataSnapshot.getValue(Image.class);
+                callback.onComplete(IDref, true, image);
 
 
             }

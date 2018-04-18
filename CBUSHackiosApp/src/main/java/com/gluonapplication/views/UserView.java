@@ -7,20 +7,29 @@ import com.gluonhq.charm.down.plugins.PicturesService;
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.control.Avatar;
+import com.gluonhq.charm.glisten.control.Dialog;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.storage.Storage;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import org.apache.commons.codec.binary.Base64;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -36,17 +45,26 @@ public class UserView extends View{
 
             Avatar avat = new Avatar();
 
+            Button profilepic = new Button("      Upload \n\t   or \nTake a picture");
+            profilepic.getStylesheets().add("CircleButton.css");
+
+            Button register = new Button("Register!");
+
             avat.setRadius(20);
 
+            VBox box = new VBox();
+            VBox inputs = new VBox();
 
-            TextField emailPut = new TextField();
-            emailPut.setPromptText("Enter Email Address");
+            TextField userPut = new TextField();
+            userPut.setPromptText("Enter Username");
 
             TextField pwPut = new TextField();
             pwPut.setPromptText("Enter Password");
 
-            Button avatar = new Button("Upload a profile image");
+            Button avatar = new Button("Choose from gallery");
             Button takePic = new Button("Take a picture");
+
+            Dialog dialog = new Dialog();
 
             avatar.setOnAction((ActionEvent e) -> {
                 ImageView imageView = new ImageView();
@@ -55,7 +73,7 @@ public class UserView extends View{
                 });
 
                 avat.setImage(imageView.getImage());
-
+                dialog.hide();
 
             });
 
@@ -66,38 +84,47 @@ public class UserView extends View{
                 });
 
                 avat.setImage(imageView.getImage());
+                dialog.hide();
 
             });
 
+            dialog.getButtons().addAll(avatar, takePic);
+            profilepic.setOnAction((ActionEvent e) -> {dialog.showAndWait();});
 
-            try {
-                serviceAccount =
-                        new FileInputStream("CBUSHackiosApp/src/main/cbushack-save-the-world-604e9-firebase-adminsdk-kvlkk-37abcc4355.json");
-            } catch (FileNotFoundException e){
-                System.out.println("Error1");
-            }
-            try {
-                options = new FirebaseOptions.Builder()
-                        .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                        .setDatabaseUrl("https://cbushack-save-the-world-604e9.firebaseio.com")
-                        .build();
-            } catch (IOException e){
-                System.out.println("Error2");
-            }
-
-
-            FirebaseApp.initializeApp(options);
 
             DatabaseReference ref = FirebaseDatabase.getInstance()
                     .getReference("Users");
 
             DatabaseReference userRef = ref;
 
+            profilepic.setTranslateX(100);
+            register.setTranslateX(100);
 
-            UserP newUser = new UserP(email.getText(), pw.getText()); //Makes new User object
-            userRef.child(newUser.getUsername()).setValueAsync(newUser); //Sets values in the child
+            inputs.getChildren().addAll(userPut, pwPut, register);
+            inputs.setSpacing(30);
+            inputs.setPadding(new Insets(20));
+
+            box.getChildren().addAll(profilepic, inputs);
+            box.setSpacing(30);
+            box.setPadding(new Insets(20));
+
+            Image imag = new Image("download.png");
+
+            ImageView sample = new ImageView();
+            sample.setImage(imag);
 
 
+
+
+            register.setOnAction((ActionEvent e) -> {
+                UserP newUser = new UserP(userPut.getText(), pwPut.getText(), imag);
+                userRef.child(newUser.getUsername()).setValueAsync(newUser);
+
+            });
+
+
+
+            setCenter(box);
 
         }
 
@@ -108,11 +135,26 @@ public class UserView extends View{
         @Override
         protected void updateAppBar(AppBar appBar) {
             appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> MobileApplication.getInstance().showLayer(GluonApplication.MENU_LAYER)));
-            appBar.setTitleText("\t\t Regsiter");
+            appBar.setTitleText("\t\t     Register");
 
         }
 
-
+        private static String encodeFileToBase64Binary(File file){
+         String encodedfile = null;
+            try {
+                FileInputStream fileInputStreamReader = new FileInputStream(file);
+                byte[] bytes = new byte[(int)file.length()];
+                fileInputStreamReader.read(bytes);
+                encodedfile = encodedfile = new String(Base64.encodeBase64(bytes), "UTF-8");
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            return encodedfile;
+        }
 
 
 
