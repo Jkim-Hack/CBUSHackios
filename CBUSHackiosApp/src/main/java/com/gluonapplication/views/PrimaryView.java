@@ -12,6 +12,7 @@ import com.gluonhq.charm.glisten.control.Icon;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.gluonapplication.GluonApplication;
+import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -33,7 +34,13 @@ public class PrimaryView extends View {
     public PrimaryView(String name) {
         super(name);
 
+        Button b = new Button("Go to other");
 
+        b.setOnAction((ActionEvent e) -> {
+            MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
+        });
+
+        setCenter(b);
 
 
     }

@@ -107,7 +107,6 @@ public class ThirdView extends View{
 
 */
 
-        MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
 
 
         VBox box = new VBox();

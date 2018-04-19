@@ -135,12 +135,12 @@ public class SecondaryView extends View {
                            emailL = email.getText();
                            passwordD = str;
                            profilePic = encodedImg;
-                               MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
+                           MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
 
 
                         }
                     });
-
+            MobileApplication.getInstance().switchView(GluonApplication.PRIMARY_VIEW);
 
         });
 
