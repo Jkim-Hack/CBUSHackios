@@ -9,12 +9,12 @@ public class UserP {
 
     private String Username;
     private String Password;
-    private Image user;
+    private String encodedImage;
 
-    public UserP(String name , String pw, Image userp){
+    public UserP(String name , String pw, String encodedImg){
         Username = name;
         Password = pw;
-        user = userp;
+        encodedImage = encodedImg;
     }
 
     public String getUsername() {
@@ -33,12 +33,11 @@ public class UserP {
         Username = username;
     }
 
-
-    public Image getUser() {
-        return user;
+    public String getEncodedImage() {
+        return encodedImage;
     }
 
-    public void setUser(Image user) {
-        this.user = user;
+    public void setEncodedImage(String encodedImage) {
+        this.encodedImage = encodedImage;
     }
 }

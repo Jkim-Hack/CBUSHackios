@@ -38,7 +38,7 @@ public class SecondaryView extends View {
     public static boolean isuserIDVal;
     public static String emailL;
     public static String passwordD;
-    public static Image profilePic;
+    public static String profilePic;
 
 
     public SecondaryView(String name) {
@@ -117,6 +117,9 @@ public class SecondaryView extends View {
         fade.setOnFinished((ActionEvent e) ->{fade1.play();});
 
 
+        Thread t = new Thread();
+        t.setDaemon(true);
+
 
 
         //Retrieves data from firebase and sees if this exists.
@@ -126,17 +129,18 @@ public class SecondaryView extends View {
 
             validate(userRef, email, new com.gluonapplication.Callback() {
                         @Override
-                        public void onComplete(String str, boolean lol, Image image) {
-                           System.out.println(lol);
+                        public void onComplete(String str, boolean lol, String encodedImg) {
+
                            isuserIDVal = lol;
                            emailL = email.getText();
                            passwordD = str;
-                           profilePic = image;
-                           System.out.println(emailL);
+                           profilePic = encodedImg;
+                               MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
+
+
                         }
                     });
 
-            //MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
 
         });
 
@@ -168,8 +172,8 @@ public class SecondaryView extends View {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String IDref = dataSnapshot.child("password").getValue(String.class);
-                Image image = dataSnapshot.getValue(Image.class);
-                callback.onComplete(IDref, true, image);
+                String ref = dataSnapshot.child("encodedImage").getValue(String.class);
+                callback.onComplete(IDref, true, ref);
 
 
             }

@@ -9,7 +9,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Gradle: com.lynden:GMapsFX:2.12.0" level="project" />
     <orderEntry type="module" module-name="CBUSHackiosApp_main" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm:4.4.1" level="project" />
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-admin:5.9.0" level="project" />
@@ -27,13 +26,11 @@
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-storage:3.7.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-pictures-ios:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:robovm-cocoatouch:2.3.1-ios11" level="project" />
-    <orderEntry type="library" name="Gradle: ch.qos.logback:logback-classic:1.2.1" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-statusbar-ios:3.7.2" level="project" />
-    <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.25" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:connect:1.4.3" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-storage-ios:3.7.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-statusbar-ios:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.google.api-client:google-api-client-gson:1.23.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.cloud:google-cloud-storage:1.15.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-plugin-storage-ios:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.google.cloud:google-cloud-core-http:1.15.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.api-client:google-api-client:1.23.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.oauth-client:google-oauth-client:1.23.0" level="project" />
@@ -64,6 +61,7 @@
     <orderEntry type="library" name="Gradle: io.opencensus:opencensus-api:0.10.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.guava:guava:20.0" level="project" />
     <orderEntry type="library" name="Gradle: org.json:json:20160810" level="project" />
+    <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.25" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-codec-http2:4.1.17.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-handler-proxy:4.1.17.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-codec-http:4.1.17.Final" level="project" />
@@ -82,16 +80,15 @@
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-runtime-args:3.6.0" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-core:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:robovm-objc:2.3.1-ios11" level="project" />
-    <orderEntry type="library" name="Gradle: ch.qos.logback:logback-core:1.2.1" level="project" />
     <orderEntry type="library" name="Gradle: org.glassfish:javax.json:1.0.4" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.findbugs:jsr305:3.0.1" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.httpcomponents:httpclient:4.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.google.auth:google-auth-library-credentials:0.9.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.apis:google-api-services-storage:v1-rev114-1.23.0" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-tcnative-boringssl-static:2.0.7.Final" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-core-ios:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-buffer:4.1.17.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-resolver:4.1.17.Final" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-core-ios:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-annotations:25.1.1" level="project" />
     <orderEntry type="library" name="Gradle: com.google.guava:guava-jdk5:17.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.7" level="project" />

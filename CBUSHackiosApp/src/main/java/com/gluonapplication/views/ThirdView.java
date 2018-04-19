@@ -24,6 +24,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
+import java.io.ByteArrayInputStream;
+import java.util.Base64;
+
+import static com.gluonapplication.views.SecondaryView.isuserIDVal;
+
 
 public class ThirdView extends View{
 
@@ -102,6 +107,9 @@ public class ThirdView extends View{
 
 */
 
+        MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
+
+
         VBox box = new VBox();
 
             Button problem1 = new Button("Gun Control");
@@ -115,9 +123,21 @@ public class ThirdView extends View{
 
         setCenter(box);
 
+        Image img = null;
+
+
+        try {
+            byte[] barr = Base64.getDecoder().decode(SecondaryView.profilePic);
+             img = new Image(new ByteArrayInputStream(barr));
+        } catch (Exception e){
+            System.out.println("NOOOOO");
+        }
+
+
+
         Circle cir2 = new Circle(250,250,120);
         cir2.setStroke(Color.SEAGREEN);
-        //cir2.setFill(new ImagePattern(SecondaryView.profilePic));
+        cir2.setFill(new ImagePattern(img));
         cir2.setEffect(new DropShadow(+25d, 0d, +2d, Color.DARKSEAGREEN));
 
         setTop(cir2);

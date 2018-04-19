@@ -16,6 +16,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -29,10 +30,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import org.apache.commons.codec.binary.Base64;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 
 
 public class UserView extends View{
@@ -40,7 +40,7 @@ public class UserView extends View{
     private FileInputStream serviceAccount;
     private FirebaseOptions options;
 
-        public UserView(String name){
+        public UserView(String name) {
             super(name);
 
             Avatar avat = new Avatar();
@@ -114,10 +114,24 @@ public class UserView extends View{
             sample.setImage(imag);
 
 
+            BufferedImage bImage = SwingFXUtils.fromFXImage(sample.getImage(), null);
+            ByteArrayOutputStream s = new ByteArrayOutputStream();
+            try {
+                ImageIO.write(bImage, "png", s);
+            } catch (Exception e){
+                System.out.println("NOOOOO");
+            }
+            byte[] res  = s.toByteArray();
+            try {
+                s.close();
+            }catch (Exception e){
+                System.out.println("NOOOOO");
+            }
+            String encoded = java.util.Base64.getEncoder().encodeToString(res);
 
 
             register.setOnAction((ActionEvent e) -> {
-                UserP newUser = new UserP(userPut.getText(), pwPut.getText(), imag);
+                UserP newUser = new UserP(userPut.getText(), pwPut.getText(), encoded);
                 userRef.child(newUser.getUsername()).setValueAsync(newUser);
 
             });
@@ -132,6 +146,7 @@ public class UserView extends View{
 
 
 
+
         @Override
         protected void updateAppBar(AppBar appBar) {
             appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> MobileApplication.getInstance().showLayer(GluonApplication.MENU_LAYER)));
@@ -139,22 +154,6 @@ public class UserView extends View{
 
         }
 
-        private static String encodeFileToBase64Binary(File file){
-         String encodedfile = null;
-            try {
-                FileInputStream fileInputStreamReader = new FileInputStream(file);
-                byte[] bytes = new byte[(int)file.length()];
-                fileInputStreamReader.read(bytes);
-                encodedfile = encodedfile = new String(Base64.encodeBase64(bytes), "UTF-8");
-            } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            return encodedfile;
-        }
 
 
 
