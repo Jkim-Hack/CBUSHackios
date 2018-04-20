@@ -9,6 +9,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="CBUSHackiosApp_main" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -18,11 +19,11 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module" module-name="CBUSHackiosApp_main" />
     <orderEntry type="library" name="Gradle: org.javafxports:jfxdvk:8.60.9" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm:4.4.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:multidex:aar:1.0.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.gluonhq:charm-down-core-android:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-admin:5.9.0" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.android.support:multidex:aar:1.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.jfoenix:jfoenix:8.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-v4:aar:25.1.1" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-glisten-connect-view:4.4.1" level="project" />
