@@ -13,15 +13,14 @@ import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.gluonapplication.GluonApplication;
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.event.EventHandler;
-
-
-
+import javafx.scene.text.Font;
 
 
 //IGNORE THIS VIEW DO NOT USE THIS YET
@@ -33,14 +32,25 @@ public class PrimaryView extends View {
 
     public PrimaryView(String name) {
         super(name);
+        String userName = "User";
+        Label welcome = new Label("Welcome, " + userName);
+        welcome.setFont(new Font("Times New Roman", 23));
 
-        Button b = new Button("Go to other");
+        VBox vbox = new VBox();
+
+        vbox.getChildren().addAll(welcome);
+        vbox.setSpacing(10);
+        vbox.setPadding(new Insets(10));
+
+        setCenter(vbox);
+
+       /* Button b = new Button("Go to other");
 
         b.setOnAction((ActionEvent e) -> {
             MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
         });
 
-        setCenter(b);
+        setCenter(b); */
 
 
     }
@@ -48,7 +58,7 @@ public class PrimaryView extends View {
     @Override
     protected void updateAppBar(AppBar appBar) {
         appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> MobileApplication.getInstance().showLayer(GluonApplication.MENU_LAYER)));
-        appBar.setTitleText("Primary");
+        appBar.setTitleText("Home");
         appBar.getActionItems().add(MaterialDesignIcon.SEARCH.button(e -> System.out.println("Search")));
     }
 

@@ -34,7 +34,7 @@ public class Problem2 extends View{
 
         VBox vbox = new VBox();
 
-        Label problem = new Label("Do you think Abortion should be \nillegal?");
+        Label problem = new Label("                Do you think Abortion should be \n                                       illegal?");
 
         JFXSlider hor_right = new JFXSlider();
         hor_right.setMaxWidth(200);
@@ -121,11 +121,11 @@ public class Problem2 extends View{
 
 
 
-        JFXButton ssbutton1 = new JFXButton("Problems");
+        JFXButton ssbutton1 = new JFXButton("Views");
         ssbutton1.setButtonType(JFXButton.ButtonType.RAISED);
         ssbutton1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
 
-        JFXButton ssbutton2 = new JFXButton("Gun \nControl");
+        JFXButton ssbutton2 = new JFXButton("   Gun \nControl");
         ssbutton2.setButtonType(JFXButton.ButtonType.RAISED);
         ssbutton2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTONTWO);
 
@@ -141,7 +141,7 @@ public class Problem2 extends View{
 
 
 
-        JFXButton sbutton3 = new JFXButton("Minimal \nWage");
+        JFXButton sbutton3 = new JFXButton("Minimum \nWage");
         sbutton3.setButtonType(JFXButton.ButtonType.RAISED);
         sbutton3.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTONTWO);
 
@@ -194,7 +194,7 @@ public class Problem2 extends View{
     @Override
     protected void updateAppBar(AppBar appBar) {
         appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> MobileApplication.getInstance().showLayer(GluonApplication.MENU_LAYER)));
-        appBar.setTitleText("\t\t Abortion");
+        appBar.setTitleText("\t\t    Abortion");
 
     }
 
