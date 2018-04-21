@@ -34,7 +34,8 @@ public class DrawerManager {
         final Item P2Item = new ViewItem("Problem2", MaterialDesignIcon.DASHBOARD.graphic(), PROBLEM2_VIEW);
         final Item P3Item = new ViewItem("Problem3", MaterialDesignIcon.DASHBOARD.graphic(), PROBLEM3_VIEW);
         final Item userItem = new ViewItem("UserV", MaterialDesignIcon.DASHBOARD.graphic(), USER_VIEW);
-        drawer.getItems().addAll(primaryItem, secondaryItem, thirdItem, P1Item, P2Item, P3Item, userItem);
+        final Item chatItem = new ViewItem("ChatRoom", MaterialDesignIcon.DASHBOARD.graphic(), CHAT_VIEW);
+        drawer.getItems().addAll(primaryItem, secondaryItem, thirdItem, P1Item, P2Item, P3Item, userItem, chatItem);
         
         if (Platform.isDesktop()) {
             final Item quitItem = new Item("Quit", MaterialDesignIcon.EXIT_TO_APP.graphic());
