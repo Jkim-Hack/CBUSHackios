@@ -13,15 +13,14 @@ import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.gluonapplication.GluonApplication;
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.event.EventHandler;
-
-
-
+import javafx.scene.text.Font;
 
 
 //IGNORE THIS VIEW DO NOT USE THIS YET
@@ -32,18 +31,28 @@ public class PrimaryView extends View {
 
 
     public PrimaryView(String name) {
-
-
-
         super(name);
 
-        Button b = new Button("Go to other");
+        Label welcome = new Label("Welcome");
+        Label userName = new Label("User");
+        welcome.setFont(new Font("Times New Roman", 23));
+        userName.setFont(new Font("Times New Roman", 23));
+
+        VBox vbox = new VBox();
+
+        vbox.getChildren().addAll(welcome, userName);
+        vbox.setSpacing(30);
+        vbox.setPadding(new Insets(10));
+
+        setCenter(vbox);
+
+       /* Button b = new Button("Go to other");
 
         b.setOnAction((ActionEvent e) -> {
             MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
         });
 
-        setCenter(b);
+        setCenter(b); */
 
 
     }
