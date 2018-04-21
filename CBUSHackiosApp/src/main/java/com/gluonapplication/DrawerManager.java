@@ -10,6 +10,7 @@ import com.gluonhq.charm.glisten.control.NavigationDrawer;
 import com.gluonhq.charm.glisten.control.NavigationDrawer.Item;
 import com.gluonhq.charm.glisten.control.NavigationDrawer.ViewItem;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
+import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 
@@ -22,10 +23,13 @@ public class DrawerManager {
     public DrawerManager() {
         this.drawer = new NavigationDrawer();
         
-        NavigationDrawer.Header header = new NavigationDrawer.Header("User Name",
-                "Multi View Project",
-                new Avatar(21, new Image(DrawerManager.class.getResourceAsStream("/icon.png"))));
+        NavigationDrawer.Header header = new NavigationDrawer.Header("Shred Squad",
+                "4 Active Conversations",
+                new Avatar(21, new Image(DrawerManager.class.getResourceAsStream("/profile.png"))));
         drawer.setHeader(header);
+        header.setOnAction((ActionEvent e) -> {
+            MobileApplication.getInstance().switchView(GluonApplication.PROBLEM1_VIEW);
+        });
         
         final Item primaryItem = new ViewItem("Home", MaterialDesignIcon.HOME.graphic(), PRIMARY_VIEW, ViewStackPolicy.SKIP);
         final Item secondaryItem = new ViewItem("Secondary", MaterialDesignIcon.DASHBOARD.graphic(), SECONDARY_VIEW);

@@ -32,6 +32,9 @@ public class PrimaryView extends View {
 
 
     public PrimaryView(String name) {
+
+
+
         super(name);
 
         Button b = new Button("Go to other");
