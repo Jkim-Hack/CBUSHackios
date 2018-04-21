@@ -76,6 +76,7 @@ public class SecondaryView extends View {
 
 
         Label label = new Label("Welcome User");
+        Label or = new Label("OR");
         label.getStylesheets().add("/welcome.css");
         StackPane controls = new StackPane(topRect, label);
         topRect.setStyle("-fx-fill: #00ccff");
@@ -105,16 +106,26 @@ public class SecondaryView extends View {
         register.getStylesheets().add("/ButtonSec.css");
 
 
-        VBox box1 = new VBox(email, pw, login, register);
+        VBox box1 = new VBox(email, pw);
         box1.setSpacing(20);
         box1.setAlignment(Pos.CENTER);
         box1.setPadding(new Insets(20));
 
-        setCenter(box1);
+        VBox box2 = new VBox(login, or, register);
+        box2.setSpacing(30);
+        box2.setAlignment(Pos.CENTER);
 
+        box2.setTranslateY(-120);
+
+        setCenter(box1);
+        setBottom(box2);
+
+        FadeInTransition fade2 = new FadeInTransition(box2);
+        fade2.setRate(2.5);
         FadeInTransition fade1 = new FadeInTransition(box1);
-        fade1.setRate(2);
-        fade.setOnFinished((ActionEvent e) ->{fade1.play();});
+        fade1.setRate(2.5);
+        fade.setOnFinished((ActionEvent e) ->{fade1.play(); fade2.play();});
+
 
 
         Thread t = new Thread();
@@ -125,8 +136,6 @@ public class SecondaryView extends View {
         //Retrieves data from firebase and sees if this exists.
         login.setOnAction((ActionEvent e) -> {
 
-
-
             validate(userRef, email, new com.gluonapplication.Callback() {
                         @Override
                         public void onComplete(String str, boolean lol, String encodedImg) {
@@ -135,7 +144,7 @@ public class SecondaryView extends View {
                            emailL = email.getText();
                            passwordD = str;
                            profilePic = encodedImg;
-                           MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
+                           MobileApplication.getInstance().switchView(GluonApplication.PRIMARY_VIEW);
 
 
                         }
@@ -144,7 +153,7 @@ public class SecondaryView extends View {
 
         });
 
-       //Currently this register button's action gets the input lines and puts it into the firebase daatabase.
+       //Currently this register button's action gets the input lines and puts it into the firebase database.
 
         register.setOnAction((ActionEvent e) -> {
 
@@ -159,6 +168,7 @@ public class SecondaryView extends View {
 
     @Override
     protected void updateAppBar(AppBar appBar) {
+        appBar.setVisible(false);
         appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> MobileApplication.getInstance().showLayer(GluonApplication.MENU_LAYER)));
         appBar.setTitleText("Secondary");
 

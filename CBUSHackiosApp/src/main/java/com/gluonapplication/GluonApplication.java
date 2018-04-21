@@ -10,8 +10,8 @@ import javafx.stage.Stage;
 
 public class GluonApplication extends MobileApplication {
 
-    public static final String PRIMARY_VIEW = HOME_VIEW;
-    public static final String SECONDARY_VIEW = "Secondary View";
+    public static final String PRIMARY_VIEW = "Primary View";
+    public static final String SECONDARY_VIEW = HOME_VIEW;
     public static final String THIRD_VIEW = "Third View";
     public static final String USER_VIEW = "User View";
     public static final String PROBLEM1_VIEW = "Problem1 View";
@@ -23,8 +23,8 @@ public class GluonApplication extends MobileApplication {
 
     @Override
     public void init() {
-        addViewFactory(PRIMARY_VIEW, () -> new PrimaryView(PRIMARY_VIEW));
         addViewFactory(SECONDARY_VIEW, () -> new SecondaryView(SECONDARY_VIEW));
+        addViewFactory(PRIMARY_VIEW, () -> new PrimaryView(PRIMARY_VIEW));
         addViewFactory(THIRD_VIEW, () -> new ThirdView(THIRD_VIEW));
         addViewFactory(PROBLEM1_VIEW, () -> new Problem1(PROBLEM1_VIEW));
         addViewFactory(PROBLEM2_VIEW, () -> new Problem2(PROBLEM2_VIEW));

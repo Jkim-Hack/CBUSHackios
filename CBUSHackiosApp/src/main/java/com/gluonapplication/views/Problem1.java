@@ -96,7 +96,7 @@ public class Problem1 extends View{
            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                if(hor_right.getValue() == 0){
                     hor_right.setStyle(
-                            "-fx-control-inner-background: red;"
+                           " -fx-control-inner-background: red;"
                             );
                } else if(hor_right.getValue() == 25){
                    hor_right.setStyle(

@@ -32,11 +32,11 @@ public class DrawerManager {
         });
         
         final Item primaryItem = new ViewItem("Home", MaterialDesignIcon.HOME.graphic(), PRIMARY_VIEW, ViewStackPolicy.SKIP);
-        final Item secondaryItem = new ViewItem("Secondary", MaterialDesignIcon.DASHBOARD.graphic(), SECONDARY_VIEW);
+        //final Item secondaryItem = new ViewItem("Login/Register", MaterialDesignIcon.DASHBOARD.graphic(), SECONDARY_VIEW);
         final Item thirdItem = new ViewItem("Third", MaterialDesignIcon.DASHBOARD.graphic(), THIRD_VIEW);
         final Item views = new ViewItem("Views", MaterialDesignIcon.DASHBOARD.graphic(), PROBLEM1_VIEW);
         final Item userItem = new ViewItem("UserV", MaterialDesignIcon.DASHBOARD.graphic(), USER_VIEW);
-        drawer.getItems().addAll(primaryItem, secondaryItem, thirdItem, views, userItem);
+        drawer.getItems().addAll(primaryItem, thirdItem, views, userItem);
         
         if (Platform.isDesktop()) {
             final Item quitItem = new Item("Quit", MaterialDesignIcon.EXIT_TO_APP.graphic());

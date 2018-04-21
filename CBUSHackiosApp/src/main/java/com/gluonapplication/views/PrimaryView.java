@@ -32,16 +32,14 @@ public class PrimaryView extends View {
 
     public PrimaryView(String name) {
         super(name);
-
-        Label welcome = new Label("Welcome");
-        Label userName = new Label("User");
+        String userName = "User";
+        Label welcome = new Label("Welcome, " + userName);
         welcome.setFont(new Font("Times New Roman", 23));
-        userName.setFont(new Font("Times New Roman", 23));
 
         VBox vbox = new VBox();
 
-        vbox.getChildren().addAll(welcome, userName);
-        vbox.setSpacing(30);
+        vbox.getChildren().addAll(welcome);
+        vbox.setSpacing(10);
         vbox.setPadding(new Insets(10));
 
         setCenter(vbox);
@@ -60,7 +58,7 @@ public class PrimaryView extends View {
     @Override
     protected void updateAppBar(AppBar appBar) {
         appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> MobileApplication.getInstance().showLayer(GluonApplication.MENU_LAYER)));
-        appBar.setTitleText("Primary");
+        appBar.setTitleText("Home");
         appBar.getActionItems().add(MaterialDesignIcon.SEARCH.button(e -> System.out.println("Search")));
     }
 
