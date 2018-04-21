@@ -36,7 +36,7 @@ public class Problem1 extends View{
 
         VBox vbox = new VBox();
 
-        Label problem = new Label("Do you think the United States should regulate \nguns?");
+        Label problem = new Label("   Do you think the United States should regulate \n                                        guns?");
 
         JFXSlider hor_right = new JFXSlider();
         hor_right.setMaxWidth(200);
@@ -127,7 +127,7 @@ public class Problem1 extends View{
         ssbutton1.setButtonType(JFXButton.ButtonType.RAISED);
         ssbutton1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
 
-        JFXButton ssbutton2 = new JFXButton("Gun \nControl");
+        JFXButton ssbutton2 = new JFXButton("   Gun \nControl");
         ssbutton2.setButtonType(JFXButton.ButtonType.RAISED);
         ssbutton2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTONTWO);
 
@@ -141,7 +141,7 @@ public class Problem1 extends View{
 
         });
 
-        JFXButton sbutton3 = new JFXButton("Minimal \nWage");
+        JFXButton sbutton3 = new JFXButton("Minimum \nWage");
         sbutton3.setButtonType(JFXButton.ButtonType.RAISED);
         sbutton3.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTONTWO);
 

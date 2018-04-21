@@ -125,7 +125,7 @@ public class Problem3 extends View{
         ssbutton1.setButtonType(JFXButton.ButtonType.RAISED);
         ssbutton1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
 
-        JFXButton ssbutton2 = new JFXButton("Gun \nControl");
+        JFXButton ssbutton2 = new JFXButton("   Gun \nControl");
         ssbutton2.setButtonType(JFXButton.ButtonType.RAISED);
         ssbutton2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTONTWO);
 
@@ -193,7 +193,7 @@ public class Problem3 extends View{
     @Override
     protected void updateAppBar(AppBar appBar) {
         appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> MobileApplication.getInstance().showLayer(GluonApplication.MENU_LAYER)));
-        appBar.setTitleText("\t\t Minimum Wage");
+        appBar.setTitleText("\t      Minimum Wage");
 
     }
 
