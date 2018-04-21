@@ -123,7 +123,7 @@ public class Problem1 extends View{
 
 
 
-        JFXButton ssbutton1 = new JFXButton("Problems");
+        JFXButton ssbutton1 = new JFXButton("Views");
         ssbutton1.setButtonType(JFXButton.ButtonType.RAISED);
         ssbutton1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
 
