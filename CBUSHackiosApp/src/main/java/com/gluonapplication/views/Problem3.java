@@ -33,7 +33,8 @@ public class Problem3 extends View{
 
         VBox vbox = new VBox();
 
-        Label problem = new Label("Do you think the minimum wage should \nincrease?");
+        Label problem = new Label("           Do you think the minimum wage should \n                                     increase?");
+
 
         JFXSlider hor_right = new JFXSlider();
         hor_right.setMaxWidth(200);
@@ -145,7 +146,7 @@ public class Problem3 extends View{
         });
 
 
-        JFXButton sbutton3 = new JFXButton("Minimal \nWage");
+        JFXButton sbutton3 = new JFXButton("Minimum \nWage");
         sbutton3.setButtonType(JFXButton.ButtonType.RAISED);
         sbutton3.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTONTWO);
 
@@ -192,7 +193,7 @@ public class Problem3 extends View{
     @Override
     protected void updateAppBar(AppBar appBar) {
         appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> MobileApplication.getInstance().showLayer(GluonApplication.MENU_LAYER)));
-        appBar.setTitleText("\t\t Minimal Wage");
+        appBar.setTitleText("\t\t Minimum Wage");
 
     }
 
