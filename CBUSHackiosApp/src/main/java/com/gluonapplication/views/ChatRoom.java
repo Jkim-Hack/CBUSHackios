@@ -34,7 +34,7 @@ public class ChatRoom extends View {
             ref.setValueAsync(input.getText());
 
         });
-        ListVi
+
 
 
 
