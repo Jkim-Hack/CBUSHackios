@@ -110,6 +110,7 @@ public class SecondaryView extends View {
         RadioButton keepData = new RadioButton("Remember Me");
         keepData.setAlignment(Pos.CENTER_LEFT);
 
+
         VBox box1 = new VBox(email, pw, keepData);
         box1.setSpacing(20);
         box1.setAlignment(Pos.CENTER);
