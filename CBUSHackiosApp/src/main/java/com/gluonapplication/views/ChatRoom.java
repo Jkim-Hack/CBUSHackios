@@ -1,7 +1,10 @@
 package com.gluonapplication.views;
 
 import com.gluonapplication.ChatMessage;
+import com.gluonhq.charm.glisten.control.Avatar;
+import com.gluonhq.charm.glisten.control.CharmListCell;
 import com.gluonhq.charm.glisten.control.CharmListView;
+import com.gluonhq.charm.glisten.control.ListTile;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
@@ -29,6 +32,7 @@ public class ChatRoom extends View {
         super(name);
 
 
+
         DatabaseReference ref = FirebaseDatabase.getInstance()
                 .getReference("Chatroom");
 
@@ -51,25 +55,62 @@ public class ChatRoom extends View {
 
         CharmListView<String, String> charmlist = new CharmListView<>();
 
-        userRef.child("jkim").addListenerForSingleValueEvent(new ValueEventListener() {
+        userRef.orderByChild("messageTime").limitToLast(1).addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String IDref = dataSnapshot.getValue(String.class);
+            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                System.out.println(dataSnapshot.getKey());
                 ObservableList<String> message = FXCollections.observableArrayList();
-                message.add(IDref);
+                message.add(dataSnapshot.child("messageText").getKey());
+
+
+                charmlist.setHeaderCellFactory(p -> new CharmListCell<String>() {
+
+                    private final ListTile tile = new ListTile();
+
+                    {
+                        Avatar avatar = new Avatar(16);
+                        tile.setPrimaryGraphic(avatar);
+                        setText(null);
+                    }
+
+                    @Override
+                    public void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null && !empty) {
+                            tile.textProperty().setAll("Density", charmlist.toString(item));
+                            setGraphic(tile);
+                        } else {
+                            setGraphic(null);
+                        }
+                    }
+
+                });
+
                 charmlist.setItems(message);
+            }
 
+            @Override
+            public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
 
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot snapshot, String previousChildName) {
 
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
-                System.out.println("nooooo");
+
             }
 
-
         });
+
 
 
 

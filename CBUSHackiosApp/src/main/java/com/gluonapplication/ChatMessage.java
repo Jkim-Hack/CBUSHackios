@@ -1,5 +1,6 @@
 package com.gluonapplication;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class ChatMessage {
@@ -13,7 +14,7 @@ public class ChatMessage {
         this.messageUser = messageUser;
 
         // Initialize to current time
-        messageTime = new Date().getTime();
+        messageTime = new Timestamp(System.currentTimeMillis()).getTime();
     }
 
     public ChatMessage(){
