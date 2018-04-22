@@ -44,7 +44,7 @@ public class SecondaryView extends View {
     public SecondaryView(String name) {
         super(name);
 
-        boolean keepD = false;
+        boolean keep = false;
 
         //getStylesheets().add(SecondaryView.class.getResource("secondary.css").toExternalForm());
 
@@ -74,6 +74,7 @@ public class SecondaryView extends View {
 
         Rectangle topRect = new Rectangle(340.0, 70);
 
+
         VBox box = new VBox();
 
 
@@ -101,6 +102,10 @@ public class SecondaryView extends View {
 
         PasswordField pw = new PasswordField();
         pw.setPromptText("Password");
+
+
+        Rectangle loginRect = new Rectangle(340.0, 70);
+        Rectangle regRect = new Rectangle(340.0, 70);
 
         Button login = new Button("Login");
         Button register = new Button("Register");
@@ -131,9 +136,13 @@ public class SecondaryView extends View {
         fade1.setRate(2.5);
         fade.setOnFinished((ActionEvent e) ->{fade1.play(); fade2.play();});
 
-
-
-
+        com.gluonhq.charm.glisten.control.Dialog error = new com.gluonhq.charm.glisten.control.Dialog();
+        error.setContent(new Label("Incorrect Username or Password"));
+        Button ok = new Button("OK");
+        ok.setOnAction(e  -> {
+            error.hide();
+        });
+        error.getButtons().add(ok);
         //Retrieves data from firebase and sees if this exists.
         login.setOnAction((ActionEvent e) -> {
 
@@ -154,12 +163,15 @@ public class SecondaryView extends View {
                 Thread.sleep(100);
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
+                
             }
-
-
-            MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
-
-
+            if(isuserIDVal){
+                pw.clear();
+                MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
+            } else {
+                pw.clear();
+                error.showAndWait();
+            }
 
         });
 
@@ -191,9 +203,9 @@ public class SecondaryView extends View {
         userRef.child(email.getText()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String IDref = dataSnapshot.child("password").getValue(String.class);
+                String IDref  = dataSnapshot.child("password").getValue(String.class);
                 String ref = dataSnapshot.child("encodedImage").getValue(String.class);
-                callback.onComplete(IDref, true, ref);
+                callback.onComplete(IDref, false, ref);
 
 
             }
@@ -206,13 +218,6 @@ public class SecondaryView extends View {
 
         });
 
-
-
     }
 
     }
-
-
-
-
-
