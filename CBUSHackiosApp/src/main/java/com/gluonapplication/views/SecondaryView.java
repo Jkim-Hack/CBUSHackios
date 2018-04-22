@@ -44,7 +44,7 @@ public class SecondaryView extends View {
     public SecondaryView(String name) {
         super(name);
 
-        boolean keep = false;
+        boolean keepD = false;
 
         //getStylesheets().add(SecondaryView.class.getResource("secondary.css").toExternalForm());
 
@@ -155,6 +155,8 @@ public class SecondaryView extends View {
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
             }
+
+
             MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
 
 
