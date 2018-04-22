@@ -60,15 +60,14 @@ public class ChatRoom extends View {
 
         TextField lol = new TextField();
 
+
         userRef.child("jkim").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String IDref = dataSnapshot.child("password").getValue(String.class);
 
                 lol.setText(IDref);
-
-
-
+                setCenter(lol);
 
             }
 
@@ -79,7 +78,7 @@ public class ChatRoom extends View {
 
 
         });
-        setCenter(lol);
+
 
 
 
