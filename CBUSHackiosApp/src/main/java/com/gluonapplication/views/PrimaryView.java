@@ -18,8 +18,10 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.event.EventHandler;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 
 
@@ -32,6 +34,7 @@ public class PrimaryView extends View {
 
     public PrimaryView(String name) {
         super(name);
+
         String userName = "User";
         Label welcome = new Label("Welcome, " + userName);
         welcome.setFont(new Font("Times New Roman", 23));

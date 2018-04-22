@@ -44,6 +44,8 @@ public class SecondaryView extends View {
     public SecondaryView(String name) {
         super(name);
 
+        boolean keep = false;
+
         //getStylesheets().add(SecondaryView.class.getResource("secondary.css").toExternalForm());
 
         try {
@@ -68,15 +70,15 @@ public class SecondaryView extends View {
                 .getReference("Users");
 
         DatabaseReference userRef = ref;
-
+        Label or = new Label("OR");
 
         Rectangle topRect = new Rectangle(340.0, 70);
 
         VBox box = new VBox();
 
 
+
         Label label = new Label("Welcome User");
-        Label or = new Label("OR");
         label.getStylesheets().add("/welcome.css");
         StackPane controls = new StackPane(topRect, label);
         topRect.setStyle("-fx-fill: #00ccff");
@@ -105,11 +107,14 @@ public class SecondaryView extends View {
         register.setPrefWidth(100);
         register.getStylesheets().add("/ButtonSec.css");
 
+        RadioButton keepData = new RadioButton("Remember Me");
+        keepData.setAlignment(Pos.CENTER_LEFT);
 
-        VBox box1 = new VBox(email, pw);
+        VBox box1 = new VBox(email, pw, keepData);
         box1.setSpacing(20);
         box1.setAlignment(Pos.CENTER);
         box1.setPadding(new Insets(20));
+
 
         VBox box2 = new VBox(login, or, register);
         box2.setSpacing(30);
@@ -149,6 +154,8 @@ public class SecondaryView extends View {
 
                         }
                     });
+            email.clear();
+            pw.clear();
             MobileApplication.getInstance().switchView(GluonApplication.PRIMARY_VIEW);
 
         });
