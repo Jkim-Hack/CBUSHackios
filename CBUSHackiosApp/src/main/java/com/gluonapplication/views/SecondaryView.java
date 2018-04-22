@@ -110,7 +110,6 @@ public class SecondaryView extends View {
         RadioButton keepData = new RadioButton("Remember Me");
         keepData.setAlignment(Pos.CENTER_LEFT);
 
-
         VBox box1 = new VBox(email, pw, keepData);
         box1.setSpacing(20);
         box1.setAlignment(Pos.CENTER);
@@ -134,10 +133,6 @@ public class SecondaryView extends View {
 
 
 
-        Thread t = new Thread();
-        t.setDaemon(true);
-
-
 
         //Retrieves data from firebase and sees if this exists.
         login.setOnAction((ActionEvent e) -> {
@@ -150,14 +145,19 @@ public class SecondaryView extends View {
                            emailL = email.getText();
                            passwordD = str;
                            profilePic = encodedImg;
-                           MobileApplication.getInstance().switchView(GluonApplication.PRIMARY_VIEW);
 
 
                         }
                     });
-            email.clear();
-            pw.clear();
-            MobileApplication.getInstance().switchView(GluonApplication.PRIMARY_VIEW);
+
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+            MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
+
+
 
         });
 
