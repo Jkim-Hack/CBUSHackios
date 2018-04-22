@@ -36,7 +36,8 @@ public class DrawerManager {
         final Item views = new ViewItem("Views", MaterialDesignIcon.DASHBOARD.graphic(), PROBLEM1_VIEW);
        // final Item userItem = new ViewItem("UserV", MaterialDesignIcon.DASHBOARD.graphic(), USER_VIEW);
         final Item quit = new ViewItem("Sign Out", MaterialDesignIcon.EXIT_TO_APP.graphic(), SECONDARY_VIEW);
-        drawer.getItems().addAll(thirdItem, views, quit);
+        final Item Chat = new ViewItem("ChatRoom", MaterialDesignIcon.EXIT_TO_APP.graphic(), CHAT_VIEW);
+        drawer.getItems().addAll(thirdItem, views, Chat, quit);
 
         
         drawer.addEventHandler(NavigationDrawer.ITEM_SELECTED, 
