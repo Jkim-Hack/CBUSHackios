@@ -74,6 +74,7 @@ public class SecondaryView extends View {
 
         Rectangle topRect = new Rectangle(340.0, 70);
 
+
         VBox box = new VBox();
 
 
@@ -101,6 +102,10 @@ public class SecondaryView extends View {
 
         PasswordField pw = new PasswordField();
         pw.setPromptText("Password");
+
+
+        Rectangle loginRect = new Rectangle(340.0, 70);
+        Rectangle regRect = new Rectangle(340.0, 70);
 
         Button login = new Button("Login");
         Button register = new Button("Register");
@@ -158,14 +163,15 @@ public class SecondaryView extends View {
                 Thread.sleep(100);
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
+                
             }
             if(isuserIDVal){
+                pw.clear();
                 MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
             } else {
+                pw.clear();
                 error.showAndWait();
             }
-
-
 
         });
 
@@ -197,9 +203,9 @@ public class SecondaryView extends View {
         userRef.child(email.getText()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String IDref = dataSnapshot.child("password").getValue(String.class);
+                String IDref  = dataSnapshot.child("password").getValue(String.class);
                 String ref = dataSnapshot.child("encodedImage").getValue(String.class);
-                callback.onComplete(IDref, true, ref);
+                callback.onComplete(IDref, false, ref);
 
 
             }
@@ -212,13 +218,6 @@ public class SecondaryView extends View {
 
         });
 
-
-
     }
 
     }
-
-
-
-
-

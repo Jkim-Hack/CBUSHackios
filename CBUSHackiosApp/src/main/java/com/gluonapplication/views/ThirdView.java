@@ -131,26 +131,13 @@ public class ThirdView extends View{
         } catch (Exception e){
             System.out.println("NOOOOO");
         }
-
-
-
-        Circle cir2 = new Circle(250,250,120);
-        cir2.setStroke(Color.SEAGREEN);
-        cir2.setFill(new ImagePattern(img));
-        cir2.setEffect(new DropShadow(+25d, 0d, +2d, Color.DARKSEAGREEN));
-
-        setTop(cir2);
-
-        box.setAlignment(Pos.CENTER);
-
-
     }
 
 
     @Override
     protected void updateAppBar(AppBar appBar) {
         appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> MobileApplication.getInstance().showLayer(GluonApplication.MENU_LAYER)));
-        appBar.setTitleText("               Current Issues");
+        appBar.setTitleText("                       Home");
 
     }
 
