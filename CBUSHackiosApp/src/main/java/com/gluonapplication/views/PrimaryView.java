@@ -65,6 +65,4 @@ public class PrimaryView extends View {
         appBar.getActionItems().add(MaterialDesignIcon.SEARCH.button(e -> System.out.println("Search")));
     }
 
-
-
 }

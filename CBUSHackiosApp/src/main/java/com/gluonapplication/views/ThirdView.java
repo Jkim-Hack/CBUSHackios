@@ -122,7 +122,7 @@ public class ThirdView extends View{
 
         setCenter(box);
 
-        Image img = null;
+        Image img = new Image("/profile.png");
 
 
         try {
@@ -150,7 +150,7 @@ public class ThirdView extends View{
     @Override
     protected void updateAppBar(AppBar appBar) {
         appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> MobileApplication.getInstance().showLayer(GluonApplication.MENU_LAYER)));
-        appBar.setTitleText("Current Issues");
+        appBar.setTitleText("               Current Issues");
 
     }
 
