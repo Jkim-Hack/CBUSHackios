@@ -39,6 +39,7 @@ public class SecondaryView extends View {
     public static String emailL;
     public static String passwordD;
     public static String profilePic;
+    private com.gluonhq.charm.glisten.control.Dialog dialog;
 
 
     public SecondaryView(String name) {
@@ -131,8 +132,12 @@ public class SecondaryView extends View {
         fade1.setRate(2.5);
         fade.setOnFinished((ActionEvent e) ->{fade1.play(); fade2.play();});
 
-
-
+        dialog.setContent(new Label("Error incorrect Username or Password"));
+        Button ok = new Button("OK");
+        ok.setOnAction(e -> {
+            dialog.hide();
+        });
+        dialog.getButtons().add(ok);
 
         //Retrieves data from firebase and sees if this exists.
         login.setOnAction((ActionEvent e) -> {
@@ -155,7 +160,12 @@ public class SecondaryView extends View {
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
             }
-            MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
+            if(isuserIDVal){
+                MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
+            } else {
+                dialog.showAndWait();
+            }
+
 
 
 

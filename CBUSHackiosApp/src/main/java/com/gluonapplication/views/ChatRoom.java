@@ -1,18 +1,24 @@
 package com.gluonapplication.views;
 
+import com.gluonapplication.ChatMessage;
+import com.gluonhq.charm.glisten.control.CharmListView;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ChatRoom extends View {
 
@@ -23,26 +29,8 @@ public class ChatRoom extends View {
         super(name);
 
 
-        try {
-            serviceAccount =
-                    new FileInputStream("CBUSHackiosApp/src/main/cbushack-save-the-world-604e9-firebase-adminsdk-kvlkk-37abcc4355.json");
-        } catch (FileNotFoundException e){
-            System.out.println("Error1");
-        }
-        try {
-            options = new FirebaseOptions.Builder()
-                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .setDatabaseUrl("https://cbushack-save-the-world-604e9.firebaseio.com")
-                    .build();
-        } catch (IOException e){
-            System.out.println("Error2");
-        }
-
-
-        FirebaseApp.initializeApp(options);
-
         DatabaseReference ref = FirebaseDatabase.getInstance()
-                .getReference("Users");
+                .getReference("Chatroom");
 
         DatabaseReference userRef = ref;
 
@@ -50,24 +38,28 @@ public class ChatRoom extends View {
         TextField input = new TextField();
         input.setPromptText("Message");
 
+
         Button send = new Button("Send");
 
         send.setOnAction((ActionEvent e) -> {
 
-            ref.setValueAsync(input.getText());
+            ref.push().setValueAsync(new ChatMessage(input.getText(), SecondaryView.emailL));
+            input.setText("");
+
 
         });
 
-        TextField lol = new TextField();
-
+        CharmListView<String, String> charmlist = new CharmListView<>();
 
         userRef.child("jkim").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String IDref = dataSnapshot.child("password").getValue(String.class);
+                String IDref = dataSnapshot.getValue(String.class);
+                ObservableList<String> message = FXCollections.observableArrayList();
+                message.add(IDref);
+                charmlist.setItems(message);
 
-                lol.setText(IDref);
-                setCenter(lol);
+
 
             }
 
@@ -83,12 +75,16 @@ public class ChatRoom extends View {
 
 
 
-
-
     }
 
 
+    private String sendMessage(TextArea message){
 
+
+
+    return null;
+
+    }
 
 
 }
