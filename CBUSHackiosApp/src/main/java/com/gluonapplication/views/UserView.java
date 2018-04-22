@@ -4,6 +4,7 @@ import com.gluonapplication.GluonApplication;
 import com.gluonapplication.UserP;
 import com.gluonhq.charm.down.Services;
 import com.gluonhq.charm.down.plugins.PicturesService;
+import com.gluonhq.charm.glisten.animation.FadeInTransition;
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.control.Avatar;
@@ -21,13 +22,16 @@ import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import org.apache.commons.codec.binary.Base64;
 
 import javax.imageio.ImageIO;
@@ -42,6 +46,26 @@ public class UserView extends View{
 
         public UserView(String name) {
             super(name);
+
+
+            Rectangle topRect = new Rectangle(340.0, 70);
+
+            VBox box1 = new VBox();
+
+
+
+            Label label = new Label("Register");
+            label.getStylesheets().add("/welcome.css");
+            StackPane controls = new StackPane(topRect, label);
+            topRect.setStyle("-fx-fill: #00ccff");
+            label.setAlignment(Pos.TOP_CENTER);
+            label.setPadding(new Insets(20));
+            box1.getChildren().add(controls);
+            setTop(box1);
+
+            FadeInTransition fade = new FadeInTransition(label);
+            fade.setRate(.75);
+            fade.play();
 
             Avatar avat = new Avatar();
 
@@ -108,6 +132,11 @@ public class UserView extends View{
             box.setSpacing(30);
             box.setPadding(new Insets(20));
 
+            setCenter(box);
+            FadeInTransition fade1 = new FadeInTransition(box);
+            fade1.setRate(2.5);
+            fade.setOnFinished((ActionEvent e) ->{fade1.play();});
+
             Image imag = new Image("download.png");
 
             ImageView sample = new ImageView();
@@ -139,7 +168,7 @@ public class UserView extends View{
 
 
 
-            setCenter(box);
+
 
         }
 
@@ -150,6 +179,7 @@ public class UserView extends View{
 
         @Override
         protected void updateAppBar(AppBar appBar) {
+            appBar.setVisible(false);
             appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> MobileApplication.getInstance().showLayer(GluonApplication.MENU_LAYER)));
             appBar.setTitleText("\t\t     Register");
 
