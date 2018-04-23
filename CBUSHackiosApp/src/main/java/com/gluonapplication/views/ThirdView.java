@@ -24,6 +24,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
 import java.io.ByteArrayInputStream;
@@ -148,7 +149,7 @@ public class ThirdView extends View{
             setTop(header);
             header.setAlignment(Pos.CENTER);
 
-        Rectangle rect = new Rectangle(300,200);
+        Rectangle rect = new Rectangle(300,175);
         Label label = new Label("This Week's Issue:");
         label.setStyle("-fx-font: 17 Ariel;");
         label.setTranslateY(-72);
@@ -157,6 +158,9 @@ public class ThirdView extends View{
         rect.setStroke(Color.BLACK);
         rect.setArcWidth(20);
         rect.setArcHeight(20);
+
+        Line line = new Line();
+
 
         Button match = new Button("Find a Match");
 
@@ -171,15 +175,20 @@ public class ThirdView extends View{
         VBox bot = new VBox(controls);
 
         setBottom(bot);
-        bot.setTranslateY(-20);
+        bot.setTranslateY(-80);
 
-        Rectangle rect2 = new Rectangle(300,200);
+        Rectangle rect2 = new Rectangle(300,175);
         rect2.setStyle("-fx-fill: #d0e8ff");
         rect2.setStroke(Color.BLACK);
         rect2.setArcWidth(20);
         rect2.setArcHeight(20);
 
-        StackPane controls2 = new StackPane(rect2);
+        Label chats = new Label("Current News");
+        chats.setAlignment(Pos.TOP_CENTER);
+        chats.setTranslateY(-72);
+        chats.setStyle("-fx-font: 17 Ariel;");
+
+        StackPane controls2 = new StackPane(rect2, chats);
 
         VBox center = new VBox(controls2);
         center.setTranslateY(30);
