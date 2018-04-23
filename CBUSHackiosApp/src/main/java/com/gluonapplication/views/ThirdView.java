@@ -198,22 +198,22 @@ public class ThirdView extends View{
         line2.setStroke(Color.GRAY);
         line2.setTranslateY(-55);
 
-        Line line3 = new Line(-75,0,115,0);
+        Line line3 = new Line(-75,0,135,0);
         line3.setStroke(Color.GRAY);
 
-        Line line4 = new Line(-75,25,115,25);
+        Line line4 = new Line(-75,25,135,25);
         line4.setStroke(Color.GRAY);
 
         Label label4 = new Label("State of Missouri bans abortions");
         label4.setStyle("-fx-font: 14 Ariel;");
 
-        StackPane controls2 = new StackPane(rect2, chats,line2, img,line3, label4, line4);
+        StackPane controls2 = new StackPane(rect2, chats,line2, img, label4);
         img.setTranslateX(-110);
         img.setTranslateY(-9);
         line3.setTranslateY(10);
-        line3.setTranslateX(20);
+        line3.setTranslateX(30);
         line4.setTranslateY(-30);
-        line4.setTranslateX(20);
+        line4.setTranslateX(30);
         label4.setTranslateY(-11);
         label4.setTranslateX(25);
 
