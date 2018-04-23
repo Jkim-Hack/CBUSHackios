@@ -37,6 +37,7 @@ public class ThirdView extends View{
     private static final String ANIMATED_OPTION_BUTTON = "animated-option-button";
     private static final String ANIMATED_OPTION_SUB_BUTTON = "animated-option-sub-button";
     private static final String ANIMATED_OPTION_SUB_BUTTONTWO = "animated-option-sub-buttontwo";
+    public static  Image profpic;
 
 
     public ThirdView(String name){
@@ -128,8 +129,9 @@ public class ThirdView extends View{
         try {
             byte[] barr = Base64.getDecoder().decode(SecondaryView.profilePic);
              img = new Image(new ByteArrayInputStream(barr));
+             profpic = img;
         } catch (Exception e){
-            System.out.println("NOOOOO");
+            System.out.println("NOOOOOy");
         }
 
 

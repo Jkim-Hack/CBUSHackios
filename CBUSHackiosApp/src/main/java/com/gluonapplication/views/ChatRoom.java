@@ -1,18 +1,36 @@
 package com.gluonapplication.views;
 
+import com.gluonapplication.ChatMessage;
+import com.gluonapplication.ChatMessageCell;
+import com.gluonhq.charm.glisten.control.Avatar;
+import com.gluonhq.charm.glisten.control.CharmListCell;
+import com.gluonhq.charm.glisten.control.CharmListView;
+import com.gluonhq.charm.glisten.control.ListTile;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 
 public class ChatRoom extends View {
 
@@ -23,26 +41,9 @@ public class ChatRoom extends View {
         super(name);
 
 
-        try {
-            serviceAccount =
-                    new FileInputStream("CBUSHackiosApp/src/main/cbushack-save-the-world-604e9-firebase-adminsdk-kvlkk-37abcc4355.json");
-        } catch (FileNotFoundException e){
-            System.out.println("Error1");
-        }
-        try {
-            options = new FirebaseOptions.Builder()
-                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .setDatabaseUrl("https://cbushack-save-the-world-604e9.firebaseio.com")
-                    .build();
-        } catch (IOException e){
-            System.out.println("Error2");
-        }
-
-
-        FirebaseApp.initializeApp(options);
 
         DatabaseReference ref = FirebaseDatabase.getInstance()
-                .getReference("Users");
+                .getReference("Chatroom");
 
         DatabaseReference userRef = ref;
 
@@ -50,44 +51,89 @@ public class ChatRoom extends View {
         TextField input = new TextField();
         input.setPromptText("Message");
 
+        String image = encodeImage(ThirdView.profpic);
+
         Button send = new Button("Send");
 
         send.setOnAction((ActionEvent e) -> {
 
-            ref.setValueAsync(input.getText());
+
+            ChatMessage messageo = new ChatMessage(input.getText(), SecondaryView.emailL, image);
+
+
+            ref.push().setValueAsync(messageo);
+            input.setText("");
+
 
         });
 
-        TextField lol = new TextField();
+        CharmListView<ChatMessage, Long> charmlist = new CharmListView<>();
+        ObservableList<ChatMessage> message = FXCollections.observableArrayList();
+        charmlist.setItems(message);
+        charmlist.setCellFactory(p -> new ChatMessageCell());
 
-
-        userRef.child("jkim").addListenerForSingleValueEvent(new ValueEventListener() {
+        userRef.orderByChild("messageTime").limitToLast(1).addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String IDref = dataSnapshot.child("password").getValue(String.class);
+            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
 
-                lol.setText(IDref);
-                setCenter(lol);
+
+                ChatMessage mee = new ChatMessage(dataSnapshot.child("messageText").getValue(String.class), dataSnapshot.child("messageUser").getValue(String.class)
+                        , dataSnapshot.child("profilepicture").getValue(String.class));
+
+                message.add(mee);
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot snapshot, String previousChildName) {
 
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
-                System.out.println("nooooo");
-            }
 
+            }
 
         });
 
 
 
-
-
+        HBox box = new HBox();
+        box.getChildren().addAll(input, send);
+        box.setSpacing(10);
+        box.setPadding(new Insets(20));
+        setCenter(charmlist);
+        setBottom(box);
 
 
     }
 
-
+    private String encodeImage(Image sample){
+        BufferedImage bImage = SwingFXUtils.fromFXImage(sample, null);
+        ByteArrayOutputStream s = new ByteArrayOutputStream();
+        try {
+            ImageIO.write(bImage, "png", s);
+        } catch (Exception e){
+            System.out.println("NOOOOOo");
+        }
+        byte[] res  = s.toByteArray();
+        try {
+            s.close();
+        }catch (Exception e){
+            System.out.println("NOOOOOl");
+        }
+        String encoded = java.util.Base64.getEncoder().encodeToString(res);
+        return encoded;
+    }
 
 
 
