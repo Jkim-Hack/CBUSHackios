@@ -152,7 +152,7 @@ public class ThirdView extends View{
         Rectangle rect = new Rectangle(300,175);
         Label label = new Label("This Week's Issue:");
         label.setStyle("-fx-font: 17 Ariel;");
-        label.setTranslateY(-72);
+        label.setTranslateY(-65);
 
         rect.setStyle("-fx-fill: #d0e8ff");
         rect.setStroke(Color.BLACK);
@@ -175,7 +175,7 @@ public class ThirdView extends View{
         VBox bot = new VBox(controls);
 
         setBottom(bot);
-        bot.setTranslateY(-80);
+        bot.setTranslateY(-110);
 
         Rectangle rect2 = new Rectangle(300,175);
         rect2.setStyle("-fx-fill: #d0e8ff");
@@ -185,13 +185,12 @@ public class ThirdView extends View{
 
         Label chats = new Label("Current News");
         chats.setAlignment(Pos.TOP_CENTER);
-        chats.setTranslateY(-72);
+        chats.setTranslateY(-65);
         chats.setStyle("-fx-font: 17 Ariel;");
 
         StackPane controls2 = new StackPane(rect2, chats);
 
         VBox center = new VBox(controls2);
-        center.setTranslateY(30);
         setCenter(center);
 
 
