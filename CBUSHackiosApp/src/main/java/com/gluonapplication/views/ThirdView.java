@@ -18,6 +18,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -138,7 +139,9 @@ public class ThirdView extends View{
 
 
 
-
+        ImageView img = new ImageView("/npr.png");
+        img.setFitHeight(50);
+        img.setFitWidth(50);
 
         Label welcome = new Label("Welcome, " + SecondaryView.emailL);
 
@@ -150,7 +153,7 @@ public class ThirdView extends View{
             header.setAlignment(Pos.CENTER);
 
         Rectangle rect = new Rectangle(300,175);
-        Label label = new Label("This Week's Issue:");
+        Label label = new Label("This Week's Issue");
         label.setStyle("-fx-font: 17 Ariel;");
         label.setTranslateY(-65);
 
@@ -190,7 +193,29 @@ public class ThirdView extends View{
         chats.setTranslateY(-65);
         chats.setStyle("-fx-font: 17 Ariel;");
 
-        StackPane controls2 = new StackPane(rect2, chats);
+
+        Line line2 = new Line(-65,115,65,115);
+        line2.setStroke(Color.GRAY);
+        line2.setTranslateY(-55);
+
+        Line line3 = new Line(-75,0,115,0);
+        line3.setStroke(Color.GRAY);
+
+        Line line4 = new Line(-75,25,115,25);
+        line4.setStroke(Color.GRAY);
+
+        Label label4 = new Label("State of Missouri bans abortions");
+        label4.setStyle("-fx-font: 14 Ariel;");
+
+        StackPane controls2 = new StackPane(rect2, chats,line2, img,line3, label4, line4);
+        img.setTranslateX(-110);
+        img.setTranslateY(-9);
+        line3.setTranslateY(10);
+        line3.setTranslateX(20);
+        line4.setTranslateY(-30);
+        line4.setTranslateX(20);
+        label4.setTranslateY(-11);
+        label4.setTranslateX(25);
 
         VBox center = new VBox(controls2);
         setCenter(center);
