@@ -203,7 +203,11 @@ public class SecondaryView extends View {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String IDref = dataSnapshot.child("password").getValue(String.class);
                 String ref = dataSnapshot.child("encodedImage").getValue(String.class);
-                callback.onComplete(IDref, true, ref);
+                boolean lol = false;
+                if(!(IDref.equals(null))){
+                    lol = true;
+                }
+                callback.onComplete(IDref, lol, ref);
 
 
             }

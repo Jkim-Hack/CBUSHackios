@@ -1,5 +1,6 @@
 package com.gluonapplication;
 
+import com.gluonapplication.views.SecondaryView;
 import com.gluonhq.charm.down.Platform;
 import com.gluonhq.charm.down.Services;
 import com.gluonhq.charm.down.plugins.LifecycleService;
@@ -14,18 +15,34 @@ import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 
+import java.io.ByteArrayInputStream;
+import java.util.Base64;
+
 import static com.gluonapplication.GluonApplication.*;
 
 public class DrawerManager {
 
     private final NavigationDrawer drawer;
 
+    public static  Image profpic;
+
     public DrawerManager() {
         this.drawer = new NavigationDrawer();
+
+        Image img = new Image("/profile.png");
+
+
+        try {
+            byte[] barr = Base64.getDecoder().decode(SecondaryView.profilePic);
+            img = new Image(new ByteArrayInputStream(barr));
+            profpic = img;
+        } catch (Exception e){
+            System.out.println("NOOOOOy");
+        }
         
         NavigationDrawer.Header header = new NavigationDrawer.Header("Shred Squad",
                 "4 Active Conversations",
-                new Avatar(21, new Image(DrawerManager.class.getResourceAsStream("/profile.png"))));
+                new Avatar(21, profpic));
         drawer.setHeader(header);
         header.setOnAction((ActionEvent e) -> {
             MobileApplication.getInstance().switchView(GluonApplication.PROBLEM1_VIEW);

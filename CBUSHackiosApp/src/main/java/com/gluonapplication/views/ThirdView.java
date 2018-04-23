@@ -37,7 +37,6 @@ public class ThirdView extends View{
     private static final String ANIMATED_OPTION_BUTTON = "animated-option-button";
     private static final String ANIMATED_OPTION_SUB_BUTTON = "animated-option-sub-button";
     private static final String ANIMATED_OPTION_SUB_BUTTONTWO = "animated-option-sub-buttontwo";
-    public static  Image profpic;
 
 
     public ThirdView(String name){
@@ -123,25 +122,7 @@ public class ThirdView extends View{
 
         setCenter(box);
 
-        Image img = new Image("/profile.png");
 
-
-        try {
-            byte[] barr = Base64.getDecoder().decode(SecondaryView.profilePic);
-             img = new Image(new ByteArrayInputStream(barr));
-             profpic = img;
-        } catch (Exception e){
-            System.out.println("NOOOOOy");
-        }
-
-
-
-        Circle cir2 = new Circle(250,250,120);
-        cir2.setStroke(Color.SEAGREEN);
-        cir2.setFill(new ImagePattern(img));
-        cir2.setEffect(new DropShadow(+25d, 0d, +2d, Color.DARKSEAGREEN));
-
-        setTop(cir2);
 
         box.setAlignment(Pos.CENTER);
 

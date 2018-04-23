@@ -26,6 +26,7 @@
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-admin:5.9.0" level="project" />
     <orderEntry type="library" name="Gradle: com.jfoenix:jfoenix:8.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-v4:aar:25.1.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-dialer:3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-glisten-connect-view:4.4.1" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-glisten:4.4.1" level="project" />
     <orderEntry type="library" name="Gradle: com.gluonhq:charm-down-plugin-display:3.7.2" level="project" />

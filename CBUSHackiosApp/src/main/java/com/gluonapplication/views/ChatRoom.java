@@ -2,11 +2,14 @@ package com.gluonapplication.views;
 
 import com.gluonapplication.ChatMessage;
 import com.gluonapplication.ChatMessageCell;
-import com.gluonhq.charm.glisten.control.Avatar;
-import com.gluonhq.charm.glisten.control.CharmListCell;
-import com.gluonhq.charm.glisten.control.CharmListView;
-import com.gluonhq.charm.glisten.control.ListTile;
+import com.gluonapplication.DrawerManager;
+import com.gluonapplication.GluonApplication;
+import com.gluonhq.charm.down.Services;
+import com.gluonhq.charm.down.plugins.DialerService;
+import com.gluonhq.charm.glisten.application.MobileApplication;
+import com.gluonhq.charm.glisten.control.*;
 import com.gluonhq.charm.glisten.mvc.View;
+import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
@@ -51,7 +54,7 @@ public class ChatRoom extends View {
         TextField input = new TextField();
         input.setPromptText("Message");
 
-        String image = encodeImage(ThirdView.profpic);
+        String image = encodeImage(DrawerManager.profpic);
 
         Button send = new Button("Send");
 
@@ -116,6 +119,17 @@ public class ChatRoom extends View {
 
 
     }
+
+    @Override
+    protected void updateAppBar(AppBar appBar) {
+        appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> MobileApplication.getInstance().showLayer(GluonApplication.MENU_LAYER)));
+        appBar.setTitleText("Chat Room");
+        appBar.getActionItems().add(MaterialDesignIcon.PHONE.button(e -> { Services.get(DialerService.class).ifPresent(service -> {
+            service.call("+16144205771");
+        });}));
+
+    }
+
 
     private String encodeImage(Image sample){
         BufferedImage bImage = SwingFXUtils.fromFXImage(sample, null);
