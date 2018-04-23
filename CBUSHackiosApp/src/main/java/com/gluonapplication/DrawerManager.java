@@ -41,7 +41,7 @@ public class DrawerManager {
         }
         
         NavigationDrawer.Header header = new NavigationDrawer.Header(SecondaryView.emailL,
-                "4 Active Conversations",
+                "1 Active Conversation",
                 new Avatar(21, profpic));
         drawer.setHeader(header);
         header.setOnAction((ActionEvent e) -> {

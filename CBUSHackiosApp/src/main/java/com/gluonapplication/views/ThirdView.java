@@ -19,10 +19,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 
 import java.io.ByteArrayInputStream;
 import java.util.Base64;
@@ -146,22 +148,44 @@ public class ThirdView extends View{
             setTop(header);
             header.setAlignment(Pos.CENTER);
 
-        VBox box = new VBox();
+        Rectangle rect = new Rectangle(300,200);
+        Label label = new Label("This Week's Issue:");
+        label.setStyle("-fx-font: 17 Ariel;");
+        label.setTranslateY(-72);
 
-            Button problem1 = new Button("Gun Control");
-            Button problem2 = new Button("Abortion");
-            Button problem3 = new Button("Minimal Wage");
+        rect.setStyle("-fx-fill: #d0e8ff");
+        rect.setStroke(Color.BLACK);
+        rect.setArcWidth(20);
+        rect.setArcHeight(20);
 
-            box.getChildren().addAll(problem1, problem2, problem3);
-
-            box.setSpacing(20);
-            box.setPadding(new Insets(20));
-
-        setCenter(box);
-
+        Button match = new Button("Find a Match");
 
 
-        box.setAlignment(Pos.CENTER);
+        Label label2 = new Label("Abortion and Planned Parenthood");
+        label2.setStyle("-fx-font: 17 Ariel;");
+
+        StackPane controls = new StackPane(rect, label, label2, match);
+        label.setAlignment(Pos.TOP_CENTER);
+        match.setTranslateY(70);
+
+        VBox bot = new VBox(controls);
+
+        setBottom(bot);
+        bot.setTranslateY(-20);
+
+        Rectangle rect2 = new Rectangle(300,200);
+        rect2.setStyle("-fx-fill: #d0e8ff");
+        rect2.setStroke(Color.BLACK);
+        rect2.setArcWidth(20);
+        rect2.setArcHeight(20);
+
+        StackPane controls2 = new StackPane(rect2);
+
+        VBox center = new VBox(controls2);
+        center.setTranslateY(30);
+        setCenter(center);
+
+
 
 
     }
@@ -169,7 +193,7 @@ public class ThirdView extends View{
     @Override
     protected void updateAppBar(AppBar appBar) {
         appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> MobileApplication.getInstance().showLayer(GluonApplication.MENU_LAYER)));
-        appBar.setTitleText("               Current Issues");
+        appBar.setTitleText("                       Home");
 
     }
 
