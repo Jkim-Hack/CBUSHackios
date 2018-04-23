@@ -159,7 +159,7 @@ public class ThirdView extends View{
         rect.setArcWidth(20);
         rect.setArcHeight(20);
 
-        Line line = new Line();
+        Line line = new Line(-85,115,85,115);
 
 
         Button match = new Button("Find a Match");
@@ -168,8 +168,10 @@ public class ThirdView extends View{
         Label label2 = new Label("Abortion and Planned Parenthood");
         label2.setStyle("-fx-font: 17 Ariel;");
 
-        StackPane controls = new StackPane(rect, label, label2, match);
+        StackPane controls = new StackPane(rect, label, label2, line);
         label.setAlignment(Pos.TOP_CENTER);
+        line.setStroke(Color.GRAY);
+        line.setTranslateY(-55);
         match.setTranslateY(70);
 
         VBox bot = new VBox(controls);
