@@ -160,7 +160,7 @@ public class UserView extends View{
 
 
             register.setOnAction((ActionEvent e) -> {
-                UserP newUser = new UserP(userPut.getText(), pwPut.getText(), encoded);
+                UserP newUser = new UserP(userPut.getText(), pwPut.getText(), encoded, 0, false);
                 userRef.child(newUser.getUsername()).setValueAsync(newUser);
                 MobileApplication.getInstance().switchView(GluonApplication.SECONDARY_VIEW);
 

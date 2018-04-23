@@ -5,6 +5,8 @@ import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.controls.JFXSlider;
@@ -28,6 +30,11 @@ public class Problem3 extends View{
 
     public Problem3(String name) {
         super(name);
+
+        DatabaseReference ref = FirebaseDatabase.getInstance()
+                .getReference("Users");
+
+        DatabaseReference userRef = ref;
 
         HBox hbox = new HBox();
 
@@ -181,6 +188,10 @@ public class Problem3 extends View{
         submit.setTranslateX(220);
 
         submit.setOnAction((ActionEvent e) -> {
+
+            int count = (int)(hor_right.getValue());
+            SecondaryView.repdemCounter += count;
+            ref.child(SecondaryView.emailL).child("counter").setValueAsync(SecondaryView.repdemCounter);
 
         });
 

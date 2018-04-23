@@ -39,6 +39,7 @@ public class SecondaryView extends View {
     public static String emailL;
     public static String passwordD;
     public static String profilePic;
+    public static int repdemCounter;
 
 
     public SecondaryView(String name) {
@@ -146,13 +147,13 @@ public class SecondaryView extends View {
 
             validate(userRef, email, new com.gluonapplication.Callback() {
                         @Override
-                        public void onComplete(String str, boolean lol, String encodedImg) {
+                        public void onComplete(String str, boolean lol, String encodedImg, int counter, boolean isFindingMatch) {
 
                            isuserIDVal = lol;
                            emailL = email.getText();
                            passwordD = str;
                            profilePic = encodedImg;
-
+                           repdemCounter = counter;
 
                         }
                     });
@@ -203,11 +204,13 @@ public class SecondaryView extends View {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String IDref = dataSnapshot.child("password").getValue(String.class);
                 String ref = dataSnapshot.child("encodedImage").getValue(String.class);
+                int counter = dataSnapshot.child("counter").getValue(Integer.class);
+                boolean findmatch = dataSnapshot.child("findingMatch").getValue(Boolean.class);
                 boolean lol = false;
-                if(!(IDref.equals(null))){
+                if(!(IDref == null)){
                     lol = true;
                 }
-                callback.onComplete(IDref, lol, ref);
+                callback.onComplete(IDref, lol, ref, counter, findmatch);
 
 
             }

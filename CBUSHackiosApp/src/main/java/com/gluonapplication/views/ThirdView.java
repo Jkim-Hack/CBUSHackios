@@ -167,6 +167,18 @@ public class ThirdView extends View{
 
         Button match = new Button("Find a Match");
 
+        match.setStyle("-fx-background-color: #fa8072;");
+        match.setPrefWidth(300);
+        match.setPrefHeight(50);
+        match.setTranslateY(215);
+        match.setTranslateX(17);
+        match.setOnAction(e -> {
+
+            MobileApplication.getInstance().switchView(GluonApplication.CHAT_VIEW);
+
+        });
+
+
 
         Label label2 = new Label("Abortion and Planned Parenthood");
         label2.setStyle("-fx-font: 17 Ariel;");
@@ -175,7 +187,7 @@ public class ThirdView extends View{
         label.setAlignment(Pos.TOP_CENTER);
         line.setStroke(Color.GRAY);
         line.setTranslateY(-55);
-        match.setTranslateY(70);
+
 
         VBox bot = new VBox(controls);
 
@@ -217,7 +229,7 @@ public class ThirdView extends View{
         label4.setTranslateY(-11);
         label4.setTranslateX(25);
 
-        VBox center = new VBox(controls2);
+        VBox center = new VBox(controls2, match);
         setCenter(center);
 
 
