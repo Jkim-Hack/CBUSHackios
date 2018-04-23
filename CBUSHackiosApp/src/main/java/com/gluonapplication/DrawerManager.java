@@ -40,7 +40,7 @@ public class DrawerManager {
             System.out.println("NOOOOOy");
         }
         
-        NavigationDrawer.Header header = new NavigationDrawer.Header("Shred Squad",
+        NavigationDrawer.Header header = new NavigationDrawer.Header(SecondaryView.emailL,
                 "4 Active Conversations",
                 new Avatar(21, profpic));
         drawer.setHeader(header);
@@ -55,6 +55,7 @@ public class DrawerManager {
         final Item quit = new ViewItem("Sign Out", MaterialDesignIcon.EXIT_TO_APP.graphic(), SECONDARY_VIEW);
         final Item Chat = new ViewItem("ChatRoom", MaterialDesignIcon.MESSAGE.graphic(), CHAT_VIEW);
         drawer.getItems().addAll(thirdItem, views, Chat, quit);
+
 
         
         drawer.addEventHandler(NavigationDrawer.ITEM_SELECTED, 

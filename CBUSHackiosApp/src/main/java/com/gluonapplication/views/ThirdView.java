@@ -109,6 +109,43 @@ public class ThirdView extends View{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Label welcome = new Label("Welcome, " + SecondaryView.emailL);
+
+        welcome.setStyle("-fx-font: 21 Ariel;");
+
+        VBox header = new VBox(welcome);
+            header.setPadding(new Insets(20));
+            setTop(header);
+            header.setAlignment(Pos.CENTER);
+
         VBox box = new VBox();
 
             Button problem1 = new Button("Gun Control");
@@ -128,7 +165,6 @@ public class ThirdView extends View{
 
 
     }
-
 
     @Override
     protected void updateAppBar(AppBar appBar) {

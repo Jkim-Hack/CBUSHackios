@@ -181,10 +181,7 @@ public class Problem1 extends View{
 
         submit.setOnAction((ActionEvent e) -> {
 
-
-
-
-
+            MobileApplication.getInstance().switchView(GluonApplication.PROBLEM2_VIEW);
         });
 
 
