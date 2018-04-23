@@ -1,27 +1,18 @@
 package com.gluonapplication.views;
 
-import com.gluonapplication.ChatMessage;
-import com.gluonapplication.GluonApplication;
-import com.gluonhq.charm.glisten.application.MobileApplication;
-import com.gluonhq.charm.glisten.control.*;
 import com.gluonhq.charm.glisten.mvc.View;
-import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class ChatRoom extends View {
 
@@ -32,9 +23,26 @@ public class ChatRoom extends View {
         super(name);
 
 
+        try {
+            serviceAccount =
+                    new FileInputStream("CBUSHackiosApp/src/main/cbushack-save-the-world-604e9-firebase-adminsdk-kvlkk-37abcc4355.json");
+        } catch (FileNotFoundException e){
+            System.out.println("Error1");
+        }
+        try {
+            options = new FirebaseOptions.Builder()
+                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                    .setDatabaseUrl("https://cbushack-save-the-world-604e9.firebaseio.com")
+                    .build();
+        } catch (IOException e){
+            System.out.println("Error2");
+        }
+
+
+        FirebaseApp.initializeApp(options);
 
         DatabaseReference ref = FirebaseDatabase.getInstance()
-                .getReference("Chatroom");
+                .getReference("Users");
 
         DatabaseReference userRef = ref;
 
@@ -42,72 +50,32 @@ public class ChatRoom extends View {
         TextField input = new TextField();
         input.setPromptText("Message");
 
-
         Button send = new Button("Send");
 
         send.setOnAction((ActionEvent e) -> {
 
-            ref.push().setValueAsync(new ChatMessage(input.getText(), SecondaryView.emailL));
-            input.setText("");
-
+            ref.setValueAsync(input.getText());
 
         });
 
-        CharmListView<String, String> charmlist = new CharmListView<>();
+        TextField lol = new TextField();
 
-        userRef.orderByChild("messageTime").limitToLast(1).addChildEventListener(new ChildEventListener() {
+
+        userRef.child("jkim").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                System.out.println(dataSnapshot.getKey());
-                ObservableList<String> message = FXCollections.observableArrayList();
-                message.add(dataSnapshot.child("messageText").getKey());
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String IDref = dataSnapshot.child("password").getValue(String.class);
 
-
-                charmlist.setHeaderCellFactory(p -> new CharmListCell<String>() {
-
-                    private final ListTile tile = new ListTile();
-
-                    {
-                        Avatar avatar = new Avatar(16);
-                        tile.setPrimaryGraphic(avatar);
-                        setText(null);
-                    }
-
-                    @Override
-                    public void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (item != null && !empty) {
-                            tile.textProperty().setAll("Density", charmlist.toString(item));
-                            setGraphic(tile);
-                        } else {
-                            setGraphic(null);
-                        }
-                    }
-
-                });
-
-                charmlist.setItems(message);
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot snapshot, String previousChildName) {
+                lol.setText(IDref);
+                setCenter(lol);
 
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
-
+                System.out.println("nooooo");
             }
+
 
         });
 
@@ -116,23 +84,11 @@ public class ChatRoom extends View {
 
 
 
-    }
-
-    @Override
-    protected void updateAppBar(AppBar appBar) {
-        appBar.setNavIcon(MaterialDesignIcon.MENU.button(e -> MobileApplication.getInstance().showLayer(GluonApplication.MENU_LAYER)));
-        appBar.setTitleText("\t      Minimum Wage");
 
     }
 
 
-    private String sendMessage(TextArea message){
 
-
-
-    return null;
-
-    }
 
 
 }

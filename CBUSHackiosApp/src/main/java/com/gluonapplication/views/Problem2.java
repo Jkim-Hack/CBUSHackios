@@ -168,13 +168,7 @@ public class Problem2 extends View{
         JFXButton submit = new JFXButton("Submit");
         submit.getStylesheets().addAll("MapButton.css");
         submit.setOnMouseEntered(e -> submit.setStyle("-fx-background-color: transparent;"));
-        submit.setOnMouseExited(e-> submit.setStyle("-fx-background-color: white"));
 
-        submit.setOnAction((ActionEvent e) -> {
-
-            MobileApplication.getInstance().switchView(GluonApplication.PROBLEM3_VIEW);
-
-        });
 
         TextArea thoughts = new TextArea();
         thoughts.setPromptText("Any other thoughts?");
