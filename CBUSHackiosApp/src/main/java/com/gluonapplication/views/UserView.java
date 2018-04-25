@@ -43,7 +43,7 @@ public class UserView extends View{
 
     private FileInputStream serviceAccount;
     private FirebaseOptions options;
-
+    public static String userName;
         public UserView(String name) {
             super(name);
 
@@ -163,11 +163,9 @@ public class UserView extends View{
                 UserP newUser = new UserP(userPut.getText(), pwPut.getText(), encoded, 0, false);
                 userRef.child(newUser.getUsername()).setValueAsync(newUser);
                 MobileApplication.getInstance().switchView(GluonApplication.SECONDARY_VIEW);
+                userName = userPut.getText();
 
             });
-
-
-
 
 
         }

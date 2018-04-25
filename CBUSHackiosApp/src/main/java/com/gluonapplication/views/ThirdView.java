@@ -111,34 +111,6 @@ public class ThirdView extends View{
 
 */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         ImageView img = new ImageView("/npr.png");
         img.setFitHeight(50);
         img.setFitWidth(50);
@@ -166,7 +138,7 @@ public class ThirdView extends View{
 
 
         Button match = new Button("Find a Match");
-
+        match.setStyle("-fx-font: 15 Ariel;");
         match.setStyle("-fx-background-color: #fa8072;");
         match.setPrefWidth(300);
         match.setPrefHeight(50);

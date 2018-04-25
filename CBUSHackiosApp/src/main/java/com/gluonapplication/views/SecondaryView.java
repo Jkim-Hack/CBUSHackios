@@ -88,16 +88,15 @@ public class SecondaryView extends View {
         box.getChildren().add(controls);
         setTop(box);
 
-        FadeInTransition fade = new FadeInTransition(label);
-        fade.setRate(.75);
-        fade.play();
+
 
         FillTransition filltrans = new FillTransition(Duration.millis(1000), topRect, Color.WHITE, Color.valueOf("#00ccff"));
         filltrans.play();
 
 
         TextField email = new TextField();
-        email.setPromptText("Email");
+        email.setPromptText("Username");
+        email.setText(UserView.userName);
 
 
         PasswordField pw = new PasswordField();
@@ -125,12 +124,15 @@ public class SecondaryView extends View {
 
         setCenter(box1);
         setBottom(box2);
-
+        FadeInTransition fade = new FadeInTransition(label);
+        fade.setRate(.75);
+        fade.play();
         FadeInTransition fade2 = new FadeInTransition(box2);
-        fade2.setRate(2.5);
+        fade2.setRate(1.5);
         FadeInTransition fade1 = new FadeInTransition(box1);
-        fade1.setRate(2.5);
-        fade.setOnFinished((ActionEvent e) ->{fade1.play(); fade2.play();});
+        fade1.setRate(1.5);
+        fade1.play();
+        fade2.play();
 
 
         com.gluonhq.charm.glisten.control.Dialog error = new com.gluonhq.charm.glisten.control.Dialog();
@@ -179,7 +181,7 @@ public class SecondaryView extends View {
         register.setOnAction((ActionEvent e) -> {
 
             MobileApplication.getInstance().switchView(GluonApplication.USER_VIEW);
-
+            //MobileApplication.getInstance().
         });
 
 
