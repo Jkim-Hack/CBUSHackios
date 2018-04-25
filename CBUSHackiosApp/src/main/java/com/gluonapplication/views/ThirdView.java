@@ -42,6 +42,8 @@ public class ThirdView extends View{
     private static final String ANIMATED_OPTION_SUB_BUTTON = "animated-option-sub-button";
     private static final String ANIMATED_OPTION_SUB_BUTTONTWO = "animated-option-sub-buttontwo";
 
+    public static  Image profpic;
+
 
     public ThirdView(String name){
         super(name);
@@ -111,9 +113,20 @@ public class ThirdView extends View{
 
 */
 
-        ImageView img = new ImageView("/npr.png");
-        img.setFitHeight(50);
-        img.setFitWidth(50);
+        Image img = new Image("/profile.png");
+
+
+        try {
+            byte[] barr = Base64.getDecoder().decode(SecondaryView.profilePic);
+            img = new Image(new ByteArrayInputStream(barr));
+            profpic = img;
+        } catch (Exception e){
+            System.out.println("NOOOOOy");
+        }
+
+        ImageView imga = new ImageView("/npr.png");
+        imga.setFitHeight(50);
+        imga.setFitWidth(50);
 
         Label welcome = new Label("Welcome, " + SecondaryView.emailL);
 
@@ -191,9 +204,9 @@ public class ThirdView extends View{
         Label label4 = new Label("State of Missouri bans abortions");
         label4.setStyle("-fx-font: 14 Ariel;");
 
-        StackPane controls2 = new StackPane(rect2, chats,line2, img, label4);
-        img.setTranslateX(-110);
-        img.setTranslateY(-9);
+        StackPane controls2 = new StackPane(rect2, chats,line2, imga, label4);
+        imga.setTranslateX(-110);
+        imga.setTranslateY(-9);
         line3.setTranslateY(10);
         line3.setTranslateX(30);
         line4.setTranslateY(-30);

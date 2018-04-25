@@ -161,7 +161,7 @@ public class SecondaryView extends View {
                     });
 
             try {
-                Thread.sleep(500);
+                Thread.sleep(1000);
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
             }
@@ -169,6 +169,7 @@ public class SecondaryView extends View {
             if(isuserIDVal){
                 pw.clear();
                 MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
+                System.out.println(SecondaryView.profilePic);
             } else {
                 pw.clear();
                 error.showAndWait();

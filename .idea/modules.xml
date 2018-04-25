@@ -10,8 +10,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/CBUSHackiosApp/CBUSHackiosApp_ios.iml" filepath="$PROJECT_DIR$/.idea/modules/CBUSHackiosApp/CBUSHackiosApp_ios.iml" group="CBUSHackiosApp" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/CBUSHackiosApp/CBUSHackiosApp_main.iml" filepath="$PROJECT_DIR$/.idea/modules/CBUSHackiosApp/CBUSHackiosApp_main.iml" group="CBUSHackiosApp" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/CBUSHackiosApp/CBUSHackiosApp_test.iml" filepath="$PROJECT_DIR$/.idea/modules/CBUSHackiosApp/CBUSHackiosApp_test.iml" group="CBUSHackiosApp" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Desktop-CBUSHackios.iml" filepath="$PROJECT_DIR$/.idea/modules/Desktop-CBUSHackios.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects-CBUSHackios.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects-CBUSHackios.iml" />
     </modules>
   </component>
 </project>
