@@ -1,0 +1,8 @@
+.label {
+
+    -fx-text-fill: white;
+    -fx-font-smoothing-type: gray;
+
+    -fx-font: 21 system;
+
+}

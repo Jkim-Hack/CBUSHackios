@@ -64,7 +64,7 @@ public class UserView extends View{
             setTop(box1);
 
             FadeInTransition fade = new FadeInTransition(label);
-            fade.setRate(.75);
+            fade.setRate(0.5);
             fade.play();
 
             Avatar avat = new Avatar();
@@ -162,18 +162,13 @@ public class UserView extends View{
             register.setOnAction((ActionEvent e) -> {
                 UserP newUser = new UserP(userPut.getText(), pwPut.getText(), encoded, 0, false);
                 userRef.child(newUser.getUsername()).setValueAsync(newUser);
-                MobileApplication.getInstance().switchView(GluonApplication.SECONDARY_VIEW);
                 userName = userPut.getText();
+                MobileApplication.getInstance().switchToPreviousView();
 
             });
 
 
         }
-
-
-
-
-
 
         @Override
         protected void updateAppBar(AppBar appBar) {

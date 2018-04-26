@@ -23,6 +23,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import jdk.nashorn.internal.codegen.CompilerConstants;
@@ -181,7 +182,7 @@ public class SecondaryView extends View {
         register.setOnAction((ActionEvent e) -> {
 
             MobileApplication.getInstance().switchView(GluonApplication.USER_VIEW);
-            //MobileApplication.getInstance().
+
         });
 
 

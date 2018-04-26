@@ -38,12 +38,14 @@ import jdk.nashorn.internal.codegen.CompilerConstants;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
+import static com.oracle.jrockit.jfr.Transition.To;
+
 public class Splash extends View {
 
     public Splash(String name) {
         super(name);
 
-        Circle cir = new Circle();
         Rectangle back = new Rectangle(335,650);
         back.setStyle("-fx-fill: #00ccff;");
         Label label = new Label("Views");
@@ -53,7 +55,8 @@ public class Splash extends View {
         Label shred = new Label("Shredd Squad");
         shred.getStylesheets().add("/welcome.css");
         shred.setStyle("-fx-font: 20 Arial;");
-        shred.setTranslateY(-110);
+        shred.setTranslateY(100);
+
         StackPane controls = new StackPane(back, label,shred);
         setCenter(controls);
 
@@ -82,9 +85,10 @@ public class Splash extends View {
 
 
                 Transition trans = new TranslateTransition();
-                ((TranslateTransition) trans).setDuration(Duration.seconds(2));
+                ((TranslateTransition) trans).setDuration(Duration.seconds(1.3));
                 ((TranslateTransition) trans).setToY(-580);
                 ((TranslateTransition) trans).setNode(back);
+
                 trans.play();
 
                 fade.setOnFinished(event -> {
@@ -93,7 +97,7 @@ public class Splash extends View {
 
                 });
 
-                PauseTransition pause1 = new PauseTransition(Duration.seconds(2));
+                PauseTransition pause1 = new PauseTransition(Duration.seconds(1.4));
                 pause1.play();
 
                 pause1.setOnFinished(g -> {
