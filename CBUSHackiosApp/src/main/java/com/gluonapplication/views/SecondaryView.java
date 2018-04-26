@@ -170,7 +170,6 @@ public class SecondaryView extends View {
             if(isuserIDVal){
                 pw.clear();
                 MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
-                System.out.println(SecondaryView.profilePic);
             } else {
                 pw.clear();
                 error.showAndWait();

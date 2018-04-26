@@ -53,74 +53,22 @@ public class ThirdView extends View{
     private static final String ANIMATED_OPTION_SUB_BUTTON = "animated-option-sub-button";
     private static final String ANIMATED_OPTION_SUB_BUTTONTWO = "animated-option-sub-buttontwo";
 
+    public static Image profpic;
+
 
     public ThirdView(String name){
         super(name);
 
-/*
-        JFXSlider hor_right = new JFXSlider();
-        hor_right.setMaxWidth(200);
-        hor_right.setIndicatorPosition(JFXSlider.IndicatorPosition.RIGHT);
-        hor_right.setSnapToTicks(true);
-        hor_right.setMajorTickUnit(100.0);
-        hor_right.setBlockIncrement(25);
-        hor_right.setShowTickLabels(true);
-        hor_right.setShowTickMarks(true);
-        hor_right.getStylesheets().add("slider.css");
+        Image img = new Image("/profile.png");
 
-        JFXNodesList profileList = new JFXNodesList();
+        try{
+            byte[] barr = Base64.getDecoder().decode(SecondaryView.profilePic);
+            img = new Image(new ByteArrayInputStream(barr));
+            profpic = img;
+        }catch (Exception e){
+            System.out.println("NOOOOOOy");
+        }
 
-
-        Button b = new Button("LOL");
-
-        profileList.addAnimatedNode(b);
-
-
-        JFXButton ssbutton1 = new JFXButton("Profile");
-        ssbutton1.setButtonType(JFXButton.ButtonType.RAISED);
-        ssbutton1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-
-        JFXButton ssbutton2 = new JFXButton("Problems");
-        ssbutton2.setButtonType(JFXButton.ButtonType.RAISED);
-        ssbutton2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTONTWO);
-
-        JFXButton ssbutton3 = new JFXButton("News");
-        ssbutton3.setButtonType(JFXButton.ButtonType.RAISED);
-        ssbutton3.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTON);
-
-        JFXButton sbutton1 = new JFXButton("Gun Control");
-        sbutton1.setButtonType(JFXButton.ButtonType.RAISED);
-        sbutton1.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTONTWO);
-
-        JFXButton sbutton2 = new JFXButton("Abortion");
-        sbutton2.setButtonType(JFXButton.ButtonType.RAISED);
-        sbutton2.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTONTWO);
-
-        JFXButton sbutton3 = new JFXButton("Minimal Wage");
-        sbutton3.setButtonType(JFXButton.ButtonType.RAISED);
-        sbutton3.getStyleClass().addAll(ANIMATED_OPTION_BUTTON, ANIMATED_OPTION_SUB_BUTTONTWO);
-
-
-
-        JFXNodesList nodesList1 = new JFXNodesList();
-        nodesList1.setRotate(270);
-        nodesList1.setSpacing(10);
-        nodesList1.addAnimatedNode(ssbutton2);
-        nodesList1.addAnimatedNode(sbutton1);
-        nodesList1.addAnimatedNode(sbutton2);
-        nodesList1.addAnimatedNode(sbutton3);
-
-
-        JFXNodesList nodesList = new JFXNodesList();
-        nodesList.setSpacing(10);
-        nodesList.addAnimatedNode(ssbutton1);
-        nodesList.addAnimatedNode(nodesList1);
-        nodesList.addAnimatedNode(ssbutton3);
-
-
-        nodesList.setPadding(new Insets(10, -10, -10, -10));
-
-*/
 /*
         ImageView img = new ImageView("/npr.png");
         img.setFitHeight(50);
