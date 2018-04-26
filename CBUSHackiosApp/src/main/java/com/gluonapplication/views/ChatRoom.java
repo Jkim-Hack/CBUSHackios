@@ -54,7 +54,7 @@ public class ChatRoom extends View {
         TextField input = new TextField();
         input.setPromptText("Message");
 
-        String image = encodeImage(DrawerManager.profpic);
+        String image = encodeImage(ThirdView.profpic);
 
         Button send = new Button("Send");
 
@@ -146,6 +146,7 @@ public class ChatRoom extends View {
             System.out.println("NOOOOOl");
         }
         String encoded = java.util.Base64.getEncoder().encodeToString(res);
+        System.out.println(encoded);
         return encoded;
     }
 

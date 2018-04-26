@@ -1,6 +1,7 @@
 package com.gluonapplication;
 
 import com.gluonapplication.views.SecondaryView;
+import com.gluonapplication.views.ThirdView;
 import com.gluonhq.charm.down.Platform;
 import com.gluonhq.charm.down.Services;
 import com.gluonhq.charm.down.plugins.LifecycleService;
@@ -24,25 +25,14 @@ public class DrawerManager {
 
     private final NavigationDrawer drawer;
 
-    public static  Image profpic;
 
     public DrawerManager() {
         this.drawer = new NavigationDrawer();
 
-        Image img = new Image("/profile.png");
-
-
-        try {
-            byte[] barr = Base64.getDecoder().decode(SecondaryView.profilePic);
-            img = new Image(new ByteArrayInputStream(barr));
-            profpic = img;
-        } catch (Exception e){
-            System.out.println("NOOOOOy");
-        }
         
         NavigationDrawer.Header header = new NavigationDrawer.Header(SecondaryView.emailL,
                 "1 Active Conversation",
-                new Avatar(21, profpic));
+                new Avatar(21, ThirdView.profpic));
         drawer.setHeader(header);
         header.setOnAction((ActionEvent e) -> {
             MobileApplication.getInstance().switchView(GluonApplication.PROBLEM1_VIEW);
