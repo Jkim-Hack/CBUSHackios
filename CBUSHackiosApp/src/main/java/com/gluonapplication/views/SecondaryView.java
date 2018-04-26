@@ -31,10 +31,11 @@ import jdk.nashorn.internal.codegen.CompilerConstants;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class SecondaryView extends View {
 
-    private FileInputStream serviceAccount;
+    private InputStream serviceAccount;
     private FirebaseOptions options;
     public static boolean isuserIDVal;
     public static String emailL;
@@ -52,8 +53,8 @@ public class SecondaryView extends View {
 
         try {
             serviceAccount =
-                    new FileInputStream("CBUSHackiosApp/src/main/cbushack-save-the-world-604e9-firebase-adminsdk-kvlkk-37abcc4355.json");
-        } catch (FileNotFoundException e){
+                     SecondaryView.class.getResourceAsStream("/cbushack-save-the-world-604e9-firebase-adminsdk-kvlkk-37abcc4355.json");
+        } catch (Exception e){
                 System.out.println("Error1");
         }
         try {
