@@ -399,18 +399,6 @@ public class ThirdView extends View{
         });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     @Override
