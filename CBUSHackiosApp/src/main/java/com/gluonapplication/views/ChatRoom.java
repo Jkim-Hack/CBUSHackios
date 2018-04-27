@@ -26,6 +26,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
+import jdk.nashorn.internal.objects.Global;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

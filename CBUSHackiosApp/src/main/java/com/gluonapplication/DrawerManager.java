@@ -28,17 +28,17 @@ public class DrawerManager {
 
     public DrawerManager() {
         this.drawer = new NavigationDrawer();
-        //drawer.setStyle("-fx-background: #aeeffc;");
+        drawer.setStyle("-fx-background: #aeeffc;");
 
         
         NavigationDrawer.Header header = new NavigationDrawer.Header(SecondaryView.emailL,
-                "1 Active Conversation",
+                "",
                 new Avatar(21, ThirdView.profpic));
         drawer.setHeader(header);
         header.setOnAction((ActionEvent e) -> {
             MobileApplication.getInstance().switchView(GluonApplication.PROBLEM1_VIEW);
         });
-        header.setStyle("-fx-background-color: #aeeffc;");
+        header.setStyle("-fx-background-color: #00c6ff;");
         
         //final Item primaryItem = new ViewItem("Home", MaterialDesignIcon.HOME.graphic(), PRIMARY_VIEW, ViewStackPolicy.SKIP);
         final Item thirdItem = new ViewItem("Home", MaterialDesignIcon.HOME.graphic(), THIRD_VIEW);

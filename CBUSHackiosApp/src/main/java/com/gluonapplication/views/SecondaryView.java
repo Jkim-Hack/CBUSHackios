@@ -12,6 +12,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.*;
 import com.google.firebase.database.annotations.NotNull;
+import com.jfoenix.controls.JFXButton;
 import javafx.animation.FillTransition;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -104,9 +105,20 @@ public class SecondaryView extends View {
         PasswordField pw = new PasswordField();
         pw.setPromptText("Password");
 
-        Button login = new Button("Login");
-        login.getStylesheets().add("/butt.css");
-        Button register = new Button("Register");
+        JFXButton login = new JFXButton("Login");
+        login.setOnMouseEntered(event -> {
+            login.setStyle("-fx-text-fill: #49bcff;");
+        });
+        login.setOnMouseExited(event -> {
+            login.setStyle("-fx-text-fill: #ffffff;");
+        });
+        JFXButton register = new JFXButton("Register");
+        register.setOnMouseEntered(event -> {
+            register.setStyle("-fx-text-fill: #49bcff;");
+        });
+        register.setOnMouseExited(event -> {
+            register.setStyle("-fx-text-fill: #ffffff;");
+        });
 
         register.setPrefWidth(100);
         register.getStylesheets().add("/butt.css");

@@ -236,6 +236,9 @@ public class ThirdView extends View{
         fourth.setLayoutX(0);
         fourth.setLayoutY(409.5);
 
+        FadeInTransition superFade = new FadeInTransition(nodes);
+        superFade.setRate(1);
+        superFade.play();
         Transition supertrans = new TranslateTransition();
         ((TranslateTransition) supertrans).setDuration(Duration.seconds(1));
         ((TranslateTransition) supertrans).setToY(-700);
@@ -321,9 +324,16 @@ public class ThirdView extends View{
         scaleDown.setToY(1);
 
         fourth.setOnMouseReleased(event -> {
-                MobileApplication.getInstance().switchView(GluonApplication.SECONDARY_VIEW);
-
-        });
+                    supertrans.play();
+                    supertrans.setOnFinished(f -> {
+                        MobileApplication.getInstance().switchView(GluonApplication.SECONDARY_VIEW);
+                        PauseTransition pause1 = new PauseTransition(Duration.seconds(1));
+                        pause1.play();
+                        pause1.setOnFinished(e -> {
+                            supertrans1.play();
+                        });
+                    });
+                });
 
         third.setOnMouseReleased(event -> {
             supertrans.play();
@@ -335,6 +345,18 @@ public class ThirdView extends View{
                 supertrans1.play();
             });
         });
+        });
+
+        first.setOnMouseReleased(event -> {
+            supertrans.play();
+            supertrans.setOnFinished(f -> {
+                MobileApplication.getInstance().switchView(GluonApplication.PROBLEM1_VIEW);
+                PauseTransition pause1 = new PauseTransition(Duration.seconds(1));
+                pause1.play();
+                pause1.setOnFinished(e -> {
+                    supertrans1.play();
+                });
+            });
         });
 
 

@@ -1,6 +1,7 @@
 package com.gluonapplication.views;
 
 import com.gluonapplication.GluonApplication;
+import com.gluonhq.charm.glisten.animation.FadeInTransition;
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.mvc.View;
@@ -173,7 +174,12 @@ public class Problem1 extends View{
 
         JFXButton submit = new JFXButton("Submit");
         submit.getStylesheets().addAll("MapButton.css");
-        submit.setOnMouseEntered(e -> submit.setStyle("-fx-background-color: transparent;"));
+        submit.setOnMouseEntered(event -> {
+            submit.setStyle("-fx-text-fill: #ffffff;");
+        });
+        submit.setOnMouseExited(event -> {
+            submit.setStyle("-fx-text-fill: #49bcff;");
+        });
 
 
         TextArea thoughts = new TextArea();
@@ -191,10 +197,14 @@ public class Problem1 extends View{
         int count = (int)(hor_right.getValue());
         SecondaryView.repdemCounter += count;
             ref.child(SecondaryView.emailL).child("Problem1Score").setValueAsync(SecondaryView.repdemCounter);
+            MobileApplication.getInstance().switchView(GluonApplication.PROBLEM2_VIEW);
         });
 
 
         setCenter(vbox);
+        FadeInTransition fade = new FadeInTransition(vbox);
+        fade.setRate(1);
+        fade.play();
 
     }
 

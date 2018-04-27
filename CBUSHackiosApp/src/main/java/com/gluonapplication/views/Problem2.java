@@ -174,8 +174,12 @@ public class Problem2 extends View{
 
         JFXButton submit = new JFXButton("Submit");
         submit.getStylesheets().addAll("MapButton.css");
-        submit.setOnMouseEntered(e -> submit.setStyle("-fx-background-color: transparent;"));
-
+        submit.setOnMouseEntered(event -> {
+            submit.setStyle("-fx-text-fill: #ffffff;");
+        });
+        submit.setOnMouseExited(event -> {
+            submit.setStyle("-fx-text-fill: #49bcff;");
+        });
 
         TextArea thoughts = new TextArea();
         thoughts.setPromptText("Any other thoughts?");
@@ -193,7 +197,7 @@ public class Problem2 extends View{
             int count = (int)(hor_right.getValue());
             SecondaryView.repdemCounter += count;
             ref.child(SecondaryView.emailL).child("Problem2Score").setValueAsync(SecondaryView.repdemCounter);
-
+            MobileApplication.getInstance().switchView(GluonApplication.PROBLEM3_VIEW);
         });
 
 
