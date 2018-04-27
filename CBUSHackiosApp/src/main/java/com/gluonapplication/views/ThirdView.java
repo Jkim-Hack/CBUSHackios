@@ -166,6 +166,8 @@ public class ThirdView extends View{
         setCenter(center);
 */
 
+
+
         //Rectangles
         Rectangle first = new Rectangle(335,136.5);
         first.setStyle("-fx-fill: #00a9ff;");
@@ -233,6 +235,16 @@ public class ThirdView extends View{
         third.setLayoutY(273);
         fourth.setLayoutX(0);
         fourth.setLayoutY(409.5);
+
+        Transition supertrans = new TranslateTransition();
+        ((TranslateTransition) supertrans).setDuration(Duration.seconds(1));
+        ((TranslateTransition) supertrans).setToY(-700);
+        ((TranslateTransition) supertrans).setNode(nodes);
+
+        Transition supertrans1 = new TranslateTransition();
+        ((TranslateTransition) supertrans1).setDuration(Duration.seconds(1));
+        ((TranslateTransition) supertrans1).setToY(0);
+        ((TranslateTransition) supertrans1).setNode(nodes);
 
         Transition trans = new TranslateTransition();
         ((TranslateTransition) trans).setDuration(Duration.seconds(1));
@@ -314,8 +326,15 @@ public class ThirdView extends View{
         });
 
         third.setOnMouseReleased(event -> {
+            supertrans.play();
+            supertrans.setOnFinished(f -> {
             MobileApplication.getInstance().switchView(GluonApplication.CHAT_VIEW);
-
+            PauseTransition pause1 = new PauseTransition(Duration.seconds(1));
+            pause1.play();
+            pause1.setOnFinished(e -> {
+                supertrans1.play();
+            });
+        });
         });
 
 

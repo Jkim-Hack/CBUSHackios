@@ -6,6 +6,7 @@ import com.gluonapplication.DrawerManager;
 import com.gluonapplication.GluonApplication;
 import com.gluonhq.charm.down.Services;
 import com.gluonhq.charm.down.plugins.DialerService;
+import com.gluonhq.charm.glisten.animation.FadeInTransition;
 import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.control.*;
 import com.gluonhq.charm.glisten.mvc.View;
@@ -116,6 +117,12 @@ public class ChatRoom extends View {
         box.setPadding(new Insets(20));
         setCenter(charmlist);
         setBottom(box);
+        FadeInTransition fade = new FadeInTransition(box);
+        FadeInTransition fade1 = new FadeInTransition(charmlist);
+        fade.setRate(1);
+        fade1.setRate(1);
+        fade.play();
+        fade1.play();
 
 
     }
