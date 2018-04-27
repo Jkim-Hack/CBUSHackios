@@ -359,8 +359,6 @@ public class ThirdView extends View{
             });
         });
 
-
-
         second.setOnMousePressed(e -> {
 
 

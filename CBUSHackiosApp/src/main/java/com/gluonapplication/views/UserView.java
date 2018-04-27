@@ -1,6 +1,7 @@
 package com.gluonapplication.views;
 
 import com.gluonapplication.GluonApplication;
+import com.gluonapplication.Hash;
 import com.gluonapplication.UserP;
 import com.gluonhq.charm.down.Services;
 import com.gluonhq.charm.down.plugins.PicturesService;
@@ -37,9 +38,12 @@ import org.apache.commons.codec.binary.Base64;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 
-public class UserView extends View{
+public class UserView extends View {
 
     private FileInputStream serviceAccount;
     private FirebaseOptions options;
@@ -160,8 +164,9 @@ public class UserView extends View{
 
 
             register.setOnAction((ActionEvent e) -> {
-                UserP newUser = new UserP(userPut.getText(), pwPut.getText(), encoded, 0, false);
-                userRef.child(newUser.getUsername()).setValueAsync(newUser);
+                UserP newUser = new UserP(userPut.getText(), Hash.MD5(pwPut.getText()), encoded, 0, false);
+
+                    userRef.child(newUser.getUsername()).setValueAsync(newUser);
                 userName = userPut.getText();
                 MobileApplication.getInstance().switchToPreviousView();
 
