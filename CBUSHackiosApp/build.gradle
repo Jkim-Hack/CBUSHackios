@@ -45,6 +45,8 @@ jfxmobile {
         manifest = 'src/android/AndroidManifest.xml'
         androidSdk = "C:/Android/android-sdk"
 
+
+
         packagingOptions {
             exclude 'META-INF/LICENSE.txt'
             exclude 'META-INF/NOTICE.txt'

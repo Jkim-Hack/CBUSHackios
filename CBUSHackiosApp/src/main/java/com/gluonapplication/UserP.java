@@ -13,11 +13,10 @@ public class UserP {
     private int counter;
     private boolean FindingMatch;
 
-    public UserP(String name , String pw, String encodedImg, int counter, boolean findingMatch){
+    public UserP(String name , String pw, String encodedImg, boolean findingMatch){
         Username = name;
         Password = pw;
         encodedImage = encodedImg;
-        this.counter = counter;
         FindingMatch = findingMatch;
     }
 

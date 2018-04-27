@@ -48,6 +48,7 @@ public class UserView extends View {
     private FileInputStream serviceAccount;
     private FirebaseOptions options;
     public static String userName;
+    public static String key;
         public UserView(String name) {
             super(name);
 
@@ -164,9 +165,10 @@ public class UserView extends View {
 
 
             register.setOnAction((ActionEvent e) -> {
-                UserP newUser = new UserP(userPut.getText(), Hash.MD5(pwPut.getText()), encoded, 0, false);
-
-                    userRef.child(newUser.getUsername()).setValueAsync(newUser);
+                UserP newUser = new UserP(userPut.getText(), Hash.MD5(pwPut.getText()), encoded , false);
+                String ke = userRef.push().getKey();
+                key = ke;
+                userRef.child(ke).setValueAsync(newUser);
                 userName = userPut.getText();
                 MobileApplication.getInstance().switchToPreviousView();
 

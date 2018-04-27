@@ -1,5 +1,6 @@
 package com.gluonapplication.views;
 
+import com.gluonapplication.Hash;
 import com.gluonapplication.UserP;
 import com.gluonhq.charm.glisten.animation.FadeInTransition;
 import com.gluonhq.charm.glisten.application.MobileApplication;
@@ -43,6 +44,7 @@ public class SecondaryView extends View {
     public static String passwordD;
     public static String profilePic;
     public static int repdemCounter;
+
 
 
     public SecondaryView(String name) {
@@ -163,18 +165,39 @@ public class SecondaryView extends View {
         //Retrieves data from firebase and sees if this exists.
         login.setOnAction((ActionEvent e) -> {
 
-            validate(userRef, email, new com.gluonapplication.Callback() {
-                        @Override
-                        public void onComplete(String str, boolean lol, String encodedImg, int counter, boolean isFindingMatch) {
 
-                           isuserIDVal = lol;
-                           emailL = email.getText();
-                           passwordD = str;
-                           profilePic = encodedImg;
-                           repdemCounter = counter;
+            System.out.println( UserView.key);
 
-                        }
-                    });
+            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String IDref = dataSnapshot.child( UserView.key).child("password").getValue(String.class);
+                    IDref = Hash.MD5(IDref);
+                    System.out.println(IDref);
+                    String ref = dataSnapshot.child( UserView.key).child("encodedImage").getValue(String.class);
+                    int counter = dataSnapshot.child( UserView.key).child("counter").getValue(Integer.class);
+                    boolean findmatch = dataSnapshot.child( UserView.key).child("findingMatch").getValue(Boolean.class);
+                    boolean lol = false;
+                    if(!(IDref == null)){
+                        lol = true;
+                    }
+
+                    isuserIDVal = lol;
+                    emailL = email.getText();
+                    passwordD = IDref;
+                    profilePic = ref;
+                    repdemCounter = counter;
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    System.out.println("nooooo");
+                }
+
+
+            });
+
 
             try {
                 Thread.sleep(500);
@@ -213,33 +236,9 @@ public class SecondaryView extends View {
 
     }
 
-    public void validate(DatabaseReference userRef, TextField email, com.gluonapplication.Callback callback){
+    public void validate(Query query, com.gluonapplication.Callback callback){
 
 
-
-        userRef.child(email.getText()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String IDref = dataSnapshot.child("password").getValue(String.class);
-                String ref = dataSnapshot.child("encodedImage").getValue(String.class);
-                int counter = dataSnapshot.child("counter").getValue(Integer.class);
-                boolean findmatch = dataSnapshot.child("findingMatch").getValue(Boolean.class);
-                boolean lol = false;
-                if(!(IDref == null)){
-                    lol = true;
-                }
-                callback.onComplete(IDref, lol, ref, counter, findmatch);
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                System.out.println("nooooo");
-            }
-
-
-        });
 
 
 

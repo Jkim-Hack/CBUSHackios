@@ -5,8 +5,7 @@ import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.controls.JFXSlider;
@@ -191,12 +190,24 @@ public class Problem3 extends View{
 
         submit.setTranslateX(220);
 
+        Query query = ref.orderByChild("username").equalTo(SecondaryView.emailL);
+
         submit.setOnAction((ActionEvent e) -> {
 
-            int count = (int)(hor_right.getValue());
-            SecondaryView.repdemCounter += count;
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    int count = (int)(hor_right.getValue());
+                    ref.child(snapshot.getKey()).child("Problem3Score").setValueAsync(count);
+                    ref.child(snapshot.getKey()).child("Problem3Response").setValueAsync(thoughts.getText());
+                }
 
-            ref.child(SecondaryView.emailL).child("Problem3Score").setValueAsync(SecondaryView.repdemCounter);
+                @Override
+                public void onCancelled(DatabaseError error) {
+
+                }
+            });
+
             MobileApplication.getInstance().switchView(GluonApplication.THIRD_VIEW);
 
         });

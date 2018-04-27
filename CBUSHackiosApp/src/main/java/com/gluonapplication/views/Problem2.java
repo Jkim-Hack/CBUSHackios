@@ -5,8 +5,7 @@ import com.gluonhq.charm.glisten.application.MobileApplication;
 import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.controls.JFXSlider;
@@ -26,7 +25,7 @@ public class Problem2 extends View{
     private static final String ANIMATED_OPTION_BUTTON = "animated-option-button";
     private static final String ANIMATED_OPTION_SUB_BUTTON = "animated-option-sub-button";
     private static final String ANIMATED_OPTION_SUB_BUTTONTWO = "animated-option-sub-buttontwo";
-
+    public static boolean problem2test = false;
 
 
     public Problem2(String name) {
@@ -192,12 +191,25 @@ public class Problem2 extends View{
 
         submit.setTranslateX(220);
 
+        Query query = ref.orderByChild("username").equalTo(SecondaryView.emailL);
+
         submit.setOnAction((ActionEvent e) -> {
 
-            int count = (int)(hor_right.getValue());
-            SecondaryView.repdemCounter += count;
-            ref.child(SecondaryView.emailL).child("Problem2Score").setValueAsync(SecondaryView.repdemCounter);
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    int count = (int)(hor_right.getValue());
+                    ref.child(snapshot.getKey()).child("Problem2Score").setValueAsync(count);
+                    ref.child(snapshot.getKey()).child("Problem2Response").setValueAsync(thoughts.getText());
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+
+                }
+            });
             MobileApplication.getInstance().switchView(GluonApplication.PROBLEM3_VIEW);
+
         });
 
 

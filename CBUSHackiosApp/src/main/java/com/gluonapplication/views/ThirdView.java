@@ -1,6 +1,7 @@
 package com.gluonapplication.views;
 
 import com.gluonapplication.GluonApplication;
+import com.gluonapplication.UserP;
 import com.gluonhq.charm.glisten.animation.FadeInTransition;
 import com.gluonhq.charm.glisten.animation.FadeOutTransition;
 import com.gluonhq.charm.glisten.application.MobileApplication;
@@ -8,6 +9,7 @@ import com.gluonhq.charm.glisten.control.AppBar;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 
+import com.google.firebase.database.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.controls.JFXSlider;
@@ -41,6 +43,7 @@ import javafx.util.Duration;
 
 import java.awt.event.MouseEvent;
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
 import java.util.Base64;
 
 import static com.gluonapplication.views.SecondaryView.isuserIDVal;
@@ -55,6 +58,7 @@ public class ThirdView extends View{
     private static final String ANIMATED_OPTION_SUB_BUTTONTWO = "animated-option-sub-buttontwo";
 
     public static Image profpic;
+    public static boolean isFirst = false;
 
 
     public ThirdView(String name){
@@ -335,7 +339,61 @@ public class ThirdView extends View{
                     });
                 });
 
+        DatabaseReference ref = FirebaseDatabase.getInstance()
+                .getReference("Users");
+        DatabaseReference ref1 = FirebaseDatabase.getInstance()
+                .getReference("Chatroom");
+
+        Query query = ref.orderByChild("username").equalTo(SecondaryView.emailL);
+
         third.setOnMouseReleased(event -> {
+            ref1.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    if(snapshot.getValue(Boolean.class)){
+                        System.out.println("Awaiting chat room");
+                    }else{
+                       if(snapshot.child("IsFirstTake").getValue(Boolean.class)){
+                           query.addListenerForSingleValueEvent(new ValueEventListener() {
+                               UserP userP = null;
+                               @Override
+                               public void onDataChange(DataSnapshot snapshot) {
+                                   userP = snapshot.getValue(UserP.class);
+                                   ref1.child("SecondUser").setValueAsync(userP);
+                                   isFirst = false;
+                               }
+                               @Override
+                               public void onCancelled(DatabaseError error) { }
+                           });
+                       } else {
+                           query.addListenerForSingleValueEvent(new ValueEventListener() {
+                               UserP userP = null;
+                               @Override
+                               public void onDataChange(DataSnapshot snapshot) {
+                                   userP = snapshot.getValue(UserP.class);
+                                   ref1.child("FirstUser").setValueAsync(userP);
+                                   ref1.child("IsFirstTake").setValueAsync(true);
+                                   isFirst = true;
+                               }
+                               @Override
+                               public void onCancelled(DatabaseError error) { }
+                           });
+                       }
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+
+                }
+            });
+
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             supertrans.play();
             supertrans.setOnFinished(f -> {
             MobileApplication.getInstance().switchView(GluonApplication.CHAT_VIEW);
@@ -424,5 +482,7 @@ public class ThirdView extends View{
         appBar.setTitleText("");
 
     }
+
+
 
 }
