@@ -50,5 +50,11 @@
                 <integer>1</integer>
                 <integer>2</integer>
         </array>
+        <key>NSCameraUsageDescription</key>
+        <string>Reason to use Camera Service (iOS 10+)</string>
+        <key>NSPhotoLibraryUsageDescription</key>
+        <string>Reason to use Photo Library (iOS 10+)</string>
+        <key>NSPhotoLibraryAddUsageDescription</key>
+        <string>We need an Avatar picture (iOS 10+)</string>
 </dict>
 </plist>

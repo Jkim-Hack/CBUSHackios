@@ -41,7 +41,7 @@ public class Problem2 extends View{
 
         VBox vbox = new VBox();
 
-        Label problem = new Label("                Do you think Abortion should be \n                                       illegal?");
+        Label problem = new Label("                Do you think Abortion should be \n                                       legal?");
 
         JFXSlider hor_right = new JFXSlider();
         hor_right.setMaxWidth(200);
@@ -192,7 +192,7 @@ public class Problem2 extends View{
 
             int count = (int)(hor_right.getValue());
             SecondaryView.repdemCounter += count;
-            ref.child(SecondaryView.emailL).child("counter").setValueAsync(SecondaryView.repdemCounter);
+            ref.child(SecondaryView.emailL).child("Problem2Score").setValueAsync(SecondaryView.repdemCounter);
 
         });
 
