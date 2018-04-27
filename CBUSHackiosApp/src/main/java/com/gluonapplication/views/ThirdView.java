@@ -39,6 +39,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
+import java.awt.event.MouseEvent;
 import java.io.ByteArrayInputStream;
 import java.util.Base64;
 
@@ -233,109 +234,132 @@ public class ThirdView extends View{
         fourth.setLayoutX(0);
         fourth.setLayoutY(409.5);
 
+        Transition trans = new TranslateTransition();
+        ((TranslateTransition) trans).setDuration(Duration.seconds(1));
+        ((TranslateTransition) trans).setToY(-125.5);
+        ((TranslateTransition) trans).setNode(week);
 
-        fourth.setOnMouseClicked(e -> {
+        Transition tran1 = new TranslateTransition();
+        ((TranslateTransition) tran1).setDuration(Duration.seconds(1));
+        ((TranslateTransition) tran1).setToY(-125.5);
+        ((TranslateTransition) tran1).setNode(gun);
 
-            MobileApplication.getInstance().switchView(GluonApplication.SECONDARY_VIEW);
+        Transition trans1 = new TranslateTransition();
+        ((TranslateTransition) trans1).setDuration(Duration.seconds(1));
+        ((TranslateTransition) trans1).setToY(-145.5);
+        ((TranslateTransition) trans1).setNode(user);
+        ScaleTransition st = new ScaleTransition(Duration.seconds(1.3), second);
+        st.setToY(4);
+        PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
+        FadeInTransition fade1 = new FadeInTransition(news1);
+        fade1.setRate(1);
+        FadeInTransition fade2 = new FadeInTransition(news2);
+        fade2.setRate(1);
+        FadeInTransition fade = new FadeInTransition(news);
+        fade.setRate(1);
+
+
+        Transition trans3 = new TranslateTransition();
+        ((TranslateTransition) trans3).setDuration(Duration.seconds(1));
+        ((TranslateTransition) trans3).setToY(0);
+        ((TranslateTransition) trans3).setNode(week);
+        Transition tran3 = new TranslateTransition();
+        ((TranslateTransition) tran3).setDuration(Duration.seconds(1));
+        ((TranslateTransition) tran3).setToY(0);
+        ((TranslateTransition) tran3).setNode(gun);
+
+        Transition down = new TranslateTransition();
+        ((TranslateTransition) down).setDuration(Duration.seconds(1));
+        ((TranslateTransition) down).setToY(125.5);
+        ((TranslateTransition) down).setNode(news);
+        Transition down1 = new TranslateTransition();
+        ((TranslateTransition) down1).setDuration(Duration.seconds(1));
+        ((TranslateTransition) down1).setToY(125.5);
+        ((TranslateTransition) down1).setNode(news1);
+        Transition down2 = new TranslateTransition();
+        ((TranslateTransition) down2).setDuration(Duration.seconds(1));
+        ((TranslateTransition) down2).setToY(125.5);
+        ((TranslateTransition) down2).setNode(news2);
+
+        Transition up = new TranslateTransition();
+        ((TranslateTransition) up).setDuration(Duration.seconds(1));
+        ((TranslateTransition) up).setToY(0);
+        ((TranslateTransition) up).setNode(news);
+        Transition up1 = new TranslateTransition();
+        ((TranslateTransition) up1).setDuration(Duration.seconds(1));
+        ((TranslateTransition) up1).setToY(0);
+        ((TranslateTransition) up1).setNode(news1);
+        Transition up2 = new TranslateTransition();
+        ((TranslateTransition) up2).setDuration(Duration.seconds(1));
+        ((TranslateTransition) up2).setToY(0);
+        ((TranslateTransition) up2).setNode(news2);
+
+
+        FadeOutTransition fade4 = new FadeOutTransition(news);
+        fade4.setRate(1);
+        FadeOutTransition fade5 = new FadeOutTransition(news1);
+        fade5.setRate(1);
+        FadeOutTransition fade6 = new FadeOutTransition(news2);
+        fade6.setRate(1);
+        Transition trans4 = new TranslateTransition();
+        ((TranslateTransition) trans4).setDuration(Duration.seconds(1));
+        ((TranslateTransition) trans4).setToY(0);
+        ((TranslateTransition) trans4).setNode(user);
+        ScaleTransition scaleDown = new ScaleTransition(Duration.seconds(1), second);
+        scaleDown.setToY(1);
+
+        fourth.setOnMouseReleased(event -> {
+                MobileApplication.getInstance().switchView(GluonApplication.SECONDARY_VIEW);
 
         });
 
-        second.setOnMouseClicked(e -> {
+        third.setOnMouseReleased(event -> {
+            MobileApplication.getInstance().switchView(GluonApplication.CHAT_VIEW);
 
-            Transition trans = new TranslateTransition();
-            ((TranslateTransition) trans).setDuration(Duration.seconds(1));
-            ((TranslateTransition) trans).setToY(-125.5);
-            ((TranslateTransition) trans).setNode(week);
-
-            Transition tran1 = new TranslateTransition();
-            ((TranslateTransition) tran1).setDuration(Duration.seconds(1));
-            ((TranslateTransition) tran1).setToY(-125.5);
-            ((TranslateTransition) tran1).setNode(gun);
-
-            Transition trans1 = new TranslateTransition();
-            ((TranslateTransition) trans1).setDuration(Duration.seconds(1));
-            ((TranslateTransition) trans1).setToY(-145.5);
-            ((TranslateTransition) trans1).setNode(user);
-            ScaleTransition st = new ScaleTransition(Duration.seconds(1), second);
-            st.setToY(4);
-            trans1.play();
-            tran1.play();
-            trans.play();
-            st.play();
-
-            PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
-            pause.play();
-            pause.setOnFinished(g -> {
-
-                news.setVisible(true);
-                news1.setVisible(true);
-                news2.setVisible(true);
-                FadeInTransition fade1 = new FadeInTransition(news1);
-                fade1.setRate(1);
-                FadeInTransition fade2 = new FadeInTransition(news2);
-                fade2.setRate(1);
-                fade2.play();
-                FadeInTransition fade = new FadeInTransition(news);
-                fade.setRate(1);
-                fade.play();
-                fade2.play();
-                fade1.play();
+        });
 
 
-            });
+
+        second.setOnMousePressed(e -> {
 
 
-            second.setOnMouseClicked(f -> {
-
-                Transition trans3 = new TranslateTransition();
-                ((TranslateTransition) trans3).setDuration(Duration.seconds(1));
-                ((TranslateTransition) trans3).setToY(0);
-                ((TranslateTransition) trans3).setNode(week);
-                Transition tran3 = new TranslateTransition();
-                ((TranslateTransition) tran3).setDuration(Duration.seconds(1));
-                ((TranslateTransition) tran3).setToY(0);
-                ((TranslateTransition) tran3).setNode(gun);
-
-                Transition down = new TranslateTransition();
-                ((TranslateTransition) down).setDuration(Duration.seconds(1));
-                ((TranslateTransition) down).setToY(125.5);
-                ((TranslateTransition) down).setNode(news);
-                Transition down1 = new TranslateTransition();
-                ((TranslateTransition) down1).setDuration(Duration.seconds(1));
-                ((TranslateTransition) down1).setToY(125.5);
-                ((TranslateTransition) down1).setNode(news1);
-                Transition down2 = new TranslateTransition();
-                ((TranslateTransition) down2).setDuration(Duration.seconds(1));
-                ((TranslateTransition) down2).setToY(125.5);
-                ((TranslateTransition) down2).setNode(news2);
+                    trans1.play();
+                    tran1.play();
+                    trans.play();
+                    st.play();
 
 
-                FadeOutTransition fade = new FadeOutTransition(news);
-                fade.setRate(1);
-                FadeOutTransition fade1 = new FadeOutTransition(news1);
-                fade1.setRate(1);
-                FadeOutTransition fade2 = new FadeOutTransition(news2);
-                fade2.setRate(1);
+                    pause.play();
+                    pause.setOnFinished(g -> {
+
+                        news.setVisible(true);
+                        news1.setVisible(true);
+                        news2.setVisible(true);
+                        fade.play();
+                        fade2.play();
+                        fade1.play();
+
+                    });
+                });
+            second.setOnMouseReleased(f -> {
+
                 down.play();
                 down1.play();
                 down2.play();
-                fade2.play();
-                fade.play();
-                fade1.play();
-                fade.setOnFinished(event -> {
+                fade6.play();
+                fade5.play();
+                fade4.play();
+                fade4.setOnFinished(event -> {
                             news.setVisible(false);
                             news1.setVisible(false);
                             news2.setVisible(false);
+                            news.setLayoutY(98);
+                         news1.setLayoutY(128);
+                             news2.setLayoutY(158);
+
                 });
 
 
-
-                Transition trans4 = new TranslateTransition();
-                ((TranslateTransition) trans4).setDuration(Duration.seconds(1));
-                ((TranslateTransition) trans4).setToY(0);
-                ((TranslateTransition) trans4).setNode(user);
-                ScaleTransition scaleDown = new ScaleTransition(Duration.seconds(1), second);
-                scaleDown.setToY(1);
                 trans3.play();
                 tran3.play();
                 trans4.play();
@@ -343,8 +367,6 @@ public class ThirdView extends View{
 
 
             });
-
-        });
 
 
     }

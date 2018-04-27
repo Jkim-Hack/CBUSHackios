@@ -105,9 +105,11 @@ public class SecondaryView extends View {
         pw.setPromptText("Password");
 
         Button login = new Button("Login");
+        login.getStylesheets().add("/butt.css");
         Button register = new Button("Register");
+
         register.setPrefWidth(100);
-        register.getStylesheets().add("/ButtonSec.css");
+        register.getStylesheets().add("/butt.css");
 
         RadioButton keepData = new RadioButton("Remember Me");
         keepData.setAlignment(Pos.CENTER_LEFT);

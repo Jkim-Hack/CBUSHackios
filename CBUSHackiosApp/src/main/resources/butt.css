@@ -1,0 +1,23 @@
+body {
+   background: #DAEBF0;
+}
+section {
+   width: 200px;
+   margin: 0 auto;
+}
+.button {
+   display: block;
+   width: 200px;
+   height: 50px;
+   margin: 50px 0;
+   background: #3498db;
+   border: none;
+   color: #fff;
+   font-size: 14px;
+   font-weight: bold;
+
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+}
+
