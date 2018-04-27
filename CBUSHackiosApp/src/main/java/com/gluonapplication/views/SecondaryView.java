@@ -43,7 +43,7 @@ public class SecondaryView extends View {
     public static String emailL;
     public static String passwordD;
     public static String profilePic;
-    public static int repdemCounter;
+    public static String key;
 
 
 
@@ -161,32 +161,39 @@ public class SecondaryView extends View {
         });
         error.getButtons().add(ok);
 
+        Query query = ref.orderByKey();
 
         //Retrieves data from firebase and sees if this exists.
         login.setOnAction((ActionEvent e) -> {
 
 
-            System.out.println( UserView.key);
 
-            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    String IDref = dataSnapshot.child( UserView.key).child("password").getValue(String.class);
-                    IDref = Hash.MD5(IDref);
-                    System.out.println(IDref);
-                    String ref = dataSnapshot.child( UserView.key).child("encodedImage").getValue(String.class);
-                    int counter = dataSnapshot.child( UserView.key).child("counter").getValue(Integer.class);
-                    boolean findmatch = dataSnapshot.child( UserView.key).child("findingMatch").getValue(Boolean.class);
-                    boolean lol = false;
-                    if(!(IDref == null)){
-                        lol = true;
+                    for(DataSnapshot child : dataSnapshot.getChildren()){
+                        System.out.println(child.child("password").getValue(String.class));
+                        String lol = pw.getText();
+                        lol = Hash.MD5(lol);
+
+
+                        if(child.child("password").getValue(String.class).equals(lol)){
+                            isuserIDVal = true;
+                            String IDref = child.child("password").getValue(String.class);
+                            IDref = Hash.MD5(IDref);
+                            System.out.println(IDref);
+                            String ref = child.child("encodedImage").getValue(String.class);
+                            int counter = child.child("counter").getValue(Integer.class);
+                            boolean findmatch = child.child("findingMatch").getValue(Boolean.class);
+                            emailL = email.getText();
+                            passwordD = IDref;
+                            profilePic = ref;
+                            key = child.getKey();
+                            break;
+                        }
                     }
 
-                    isuserIDVal = lol;
-                    emailL = email.getText();
-                    passwordD = IDref;
-                    profilePic = ref;
-                    repdemCounter = counter;
 
                 }
 
@@ -200,7 +207,7 @@ public class SecondaryView extends View {
 
 
             try {
-                Thread.sleep(500);
+                Thread.sleep(1300);
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
             }

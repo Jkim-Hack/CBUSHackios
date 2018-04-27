@@ -61,6 +61,8 @@ public class Splash extends View {
         setCenter(controls);
 
 
+
+
         Task<Void> task = new Task<Void>() {
 
             @Override

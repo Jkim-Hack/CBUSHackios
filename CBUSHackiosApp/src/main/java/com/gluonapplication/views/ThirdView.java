@@ -59,6 +59,7 @@ public class ThirdView extends View{
 
     public static Image profpic;
     public static boolean isFirst = false;
+    public static UserP opponent;
 
 
     public ThirdView(String name){
@@ -347,6 +348,7 @@ public class ThirdView extends View{
         Query query = ref.orderByChild("username").equalTo(SecondaryView.emailL);
 
         third.setOnMouseReleased(event -> {
+            ref.child(SecondaryView.key).child("findingMatch").setValueAsync(true);
             ref1.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
@@ -380,6 +382,15 @@ public class ThirdView extends View{
                            });
                        }
                     }
+                    if(isFirst){
+                        opponent = snapshot.child("SecondUser").getValue(UserP.class);
+                        ref1.setValueAsync(true);
+                    }
+                    else {
+                        opponent = snapshot.child("FirstUser").getValue(UserP.class);
+                        ref1.setValueAsync(true);
+                    }
+
                 }
 
                 @Override
@@ -389,14 +400,14 @@ public class ThirdView extends View{
             });
 
             try {
-                Thread.sleep(500);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
             supertrans.play();
             supertrans.setOnFinished(f -> {
-            MobileApplication.getInstance().switchView(GluonApplication.CHAT_VIEW);
+            MobileApplication.getInstance().switchView(GluonApplication.CHATSPLASH_VIEW);
             PauseTransition pause1 = new PauseTransition(Duration.seconds(1));
             pause1.play();
             pause1.setOnFinished(e -> {
