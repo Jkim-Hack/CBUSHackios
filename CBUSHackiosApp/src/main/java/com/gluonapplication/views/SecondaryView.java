@@ -165,7 +165,7 @@ public class SecondaryView extends View {
                     });
 
             try {
-                Thread.sleep(1000);
+                Thread.sleep(500);
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
             }

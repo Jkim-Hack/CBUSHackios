@@ -190,7 +190,7 @@ public class Problem1 extends View{
         submit.setOnAction((ActionEvent e) -> {
         int count = (int)(hor_right.getValue());
         SecondaryView.repdemCounter += count;
-        ref.child(SecondaryView.emailL).child("counter").setValueAsync(SecondaryView.repdemCounter);
+            ref.child(SecondaryView.emailL).child("Problem1Score").setValueAsync(SecondaryView.repdemCounter);
         });
 
 

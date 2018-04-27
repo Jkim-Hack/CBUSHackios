@@ -28,6 +28,7 @@ public class DrawerManager {
 
     public DrawerManager() {
         this.drawer = new NavigationDrawer();
+        //drawer.setStyle("-fx-background: #aeeffc;");
 
         
         NavigationDrawer.Header header = new NavigationDrawer.Header(SecondaryView.emailL,
@@ -37,6 +38,7 @@ public class DrawerManager {
         header.setOnAction((ActionEvent e) -> {
             MobileApplication.getInstance().switchView(GluonApplication.PROBLEM1_VIEW);
         });
+        header.setStyle("-fx-background-color: #aeeffc;");
         
         //final Item primaryItem = new ViewItem("Home", MaterialDesignIcon.HOME.graphic(), PRIMARY_VIEW, ViewStackPolicy.SKIP);
         final Item thirdItem = new ViewItem("Home", MaterialDesignIcon.HOME.graphic(), THIRD_VIEW);
