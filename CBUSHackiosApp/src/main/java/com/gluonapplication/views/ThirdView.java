@@ -250,7 +250,7 @@ public class ThirdView extends View{
         ((TranslateTransition) trans1).setNode(user);
         ScaleTransition st = new ScaleTransition(Duration.seconds(1.3), second);
         st.setToY(4);
-        PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
+        PauseTransition pause = new PauseTransition(Duration.seconds(0.25));
         FadeInTransition fade1 = new FadeInTransition(news1);
         fade1.setRate(1);
         FadeInTransition fade2 = new FadeInTransition(news2);
@@ -323,21 +323,30 @@ public class ThirdView extends View{
         second.setOnMousePressed(e -> {
 
 
-                    trans1.play();
-                    tran1.play();
+                     trans1.play();
+                     tran1.play();
                     trans.play();
-                    st.play();
+                      st.play();
 
 
                     pause.play();
                     pause.setOnFinished(g -> {
 
-                        news.setVisible(true);
-                        news1.setVisible(true);
-                        news2.setVisible(true);
+                        up.play();
+                        up1.play();
+                        up2.play();
+
                         fade.play();
                         fade2.play();
                         fade1.play();
+                        pause.play();
+                        pause.setOnFinished(h -> {
+
+
+                            news.setVisible(true);
+                            news1.setVisible(true);
+                            news2.setVisible(true);
+                    });
 
                     });
                 });
@@ -350,13 +359,12 @@ public class ThirdView extends View{
                 fade5.play();
                 fade4.play();
                 fade4.setOnFinished(event -> {
-                            news.setVisible(false);
-                            news1.setVisible(false);
-                            news2.setVisible(false);
-                            news.setLayoutY(98);
-                         news1.setLayoutY(128);
-                             news2.setLayoutY(158);
-
+                       news.setVisible(false);
+                       news1.setVisible(false);
+                       news2.setVisible(false);
+                       news.setLayoutY(98);
+                       news1.setLayoutY(128);
+                       news2.setLayoutY(158);
                 });
 
 

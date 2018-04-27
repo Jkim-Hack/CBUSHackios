@@ -12,10 +12,10 @@ public class GluonApplication extends MobileApplication {
 
 
    //
-    public static final String SPLASH_VIEW = HOME_VIEW;
+    public static final String SPLASH_VIEW = "splajs";
     public static final String PRIMARY_VIEW = "Primary View";
     public static final String SECONDARY_VIEW = "Secondary View";
-    public static final String THIRD_VIEW = "Third ";
+    public static final String THIRD_VIEW = HOME_VIEW;
     public static final String USER_VIEW = "User View";
     public static final String CHAT_VIEW = "Chat Room";
     public static final String PROBLEM1_VIEW = "Problem1 View";
