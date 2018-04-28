@@ -78,10 +78,7 @@ public class ChatSplash extends View {
         pause.play();
         pause.setOnFinished(e -> {
             up.play();
-            up.setOnFinished(f -> {
-                MobileApplication.getInstance().switchView(GluonApplication.CHAT_VIEW);
-                up1.play();
-            });
+            MobileApplication.getInstance().switchView(GluonApplication.CHAT_VIEW);
         });
 
 
@@ -98,4 +95,3 @@ public class ChatSplash extends View {
     }
 
     }
-
